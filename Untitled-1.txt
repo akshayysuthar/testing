@@ -1,0 +1,58 @@
+function startCountdown() {
+  var countdownEl = document.getElementById("countdown");
+  var countdownBtn = document.getElementById("countdown-btn");
+  var continueBtn = document.getElementById("continue-btn");
+  var timeLeft = 1;
+  countdownBtn.style.display = "none";
+  continueBtn.style.display = "none";
+  var countdownInterval = setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      countdownEl.innerHTML = "Scroll down and click on continue button";
+      continueBtn.style.display = "block";
+    } else {
+      countdownEl.innerHTML = "PLease wait " + timeLeft + " seconds";
+    }
+    timeLeft -= 1;
+  }, 1000);
+}
+function continueBtn() {
+  var countdownEl = document.getElementById("countdown1");
+  var countdownBtn = document.getElementById("countdown-btn");
+  var continueBtn = document.getElementById("continue-btn");
+  var linkDiv = document.getElementById("linkDiv");
+  var timeLeft = 1;
+  countdownBtn.style.display = "none";
+  continueBtn.style.display = "none";
+  var countdownInterval = setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      linkDiv.innerHTML += `<button onclick="openpostPage()" style="display: block;">Go to download Link</button>`;
+      continueBtn.style.display = "none";
+      countdownEl.style.display = "none";
+    } else {
+      countdownEl.innerHTML = "PLease Wait " + timeLeft + " seconds";
+    }
+    timeLeft -= 1;
+  }, 1000);
+}
+
+var linkId = new URLSearchParams(window.location.search).get("id");
+
+db.collection("telegram-post")
+  .doc(linkId)
+  .get()
+  .then((doc) => {
+    // Check if the post exists
+    if (!doc.exists) {
+      console.error(`Post with ID "${linkId}" does not exist`);
+      alert("The post you are looking for could not be found");
+      return;
+    }
+    const post = doc.data().link1080p;
+
+    console.log(post);
+  });
+
+  var movie = new URLSearchParams(window.location.search).get("movie");
+var type = new URLSearchParams(window.location.search).get("type");
