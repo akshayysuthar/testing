@@ -5,27 +5,256 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tab-title"></title>
+    <title>Never Miss a Payment: Pay Your Water Bill on Time with UPI</title>
 
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/editor.css">
     <link rel="stylesheet" href="./css/blog.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <style>
         .download-btn {
-            margin-top: 5rem;
-        }
-
-        .download-btn button {
-            margin-left: 10rem;
-        }
-
-        .download-btn p {
-            margin-left: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
         }
     </style>
 
+    <link rel="stylesheet" id="wp-block-library-css"
+        href="https://techvybes.com/wp-includes/css/dist/block-library/style.min.css?ver=6.2" type="text/css"
+        media="all">
+    <style id="wp-block-library-theme-inline-css" type="text/css">
+        .wp-block-audio figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-audio figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-audio {
+            margin: 0 0 1em
+        }
+
+        .wp-block-code {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Menlo, Consolas, monaco, monospace;
+            padding: .8em 1em
+        }
+
+        .wp-block-embed figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-embed figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-embed {
+            margin: 0 0 1em
+        }
+
+        .blocks-gallery-caption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .blocks-gallery-caption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-image figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-image figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-image {
+            margin: 0 0 1em
+        }
+
+        .wp-block-pullquote {
+            border-bottom: 4px solid;
+            border-top: 4px solid;
+            color: currentColor;
+            margin-bottom: 1.75em
+        }
+
+        .wp-block-pullquote cite,
+        .wp-block-pullquote footer,
+        .wp-block-pullquote__citation {
+            color: currentColor;
+            font-size: .8125em;
+            font-style: normal;
+            text-transform: uppercase
+        }
+
+        .wp-block-quote {
+            border-left: .25em solid;
+            margin: 0 0 1.75em;
+            padding-left: 1em
+        }
+
+        .wp-block-quote cite,
+        .wp-block-quote footer {
+            color: currentColor;
+            font-size: .8125em;
+            font-style: normal;
+            position: relative
+        }
+
+        .wp-block-quote.has-text-align-right {
+            border-left: none;
+            border-right: .25em solid;
+            padding-left: 0;
+            padding-right: 1em
+        }
+
+        .wp-block-quote.has-text-align-center {
+            border: none;
+            padding-left: 0
+        }
+
+        .wp-block-quote.is-large,
+        .wp-block-quote.is-style-large,
+        .wp-block-quote.is-style-plain {
+            border: none
+        }
+
+        .wp-block-search .wp-block-search__label {
+            font-weight: 700
+        }
+
+        .wp-block-search__button {
+            border: 1px solid #ccc;
+            padding: .375em .625em
+        }
+
+        :where(.wp-block-group.has-background) {
+            padding: 1.25em 2.375em
+        }
+
+        .wp-block-separator.has-css-opacity {
+            opacity: .4
+        }
+
+        .wp-block-separator {
+            border: none;
+            border-bottom: 2px solid;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .wp-block-separator.has-alpha-channel-opacity {
+            opacity: 1
+        }
+
+        .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+            width: 100px
+        }
+
+        .wp-block-separator.has-background:not(.is-style-dots) {
+            border-bottom: none;
+            height: 1px
+        }
+
+        .wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots) {
+            height: 2px
+        }
+
+        .wp-block-table {
+            margin: 0 0 1em
+        }
+
+        .wp-block-table td,
+        .wp-block-table th {
+            word-break: normal
+        }
+
+        .wp-block-table figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-table figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-video figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-video figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-video {
+            margin: 0 0 1em
+        }
+
+        .wp-block-template-part.has-background {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 1.25em 2.375em
+        }
+    </style>
+    <link rel="stylesheet" id="contact-form-7-css"
+        href="https://techvybes.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.7.4" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-base-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/base.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-styles-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/style.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-widgets-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/widgets.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-helpers-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/helpers.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-fontawesome5-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/fontawesome.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-ilightbox-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/ilightbox/dark-skin/skin.css?ver=6.0.1"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="tie-css-single-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/single.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-print-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/print.css?ver=6.0.1" type="text/css"
+        media="print">
+    <style id="tie-css-print-inline-css" type="text/css">
+        .wf-active .logo-text,
+        .wf-active h1,
+        .wf-active h2,
+        .wf-active h3,
+        .wf-active h4,
+        .wf-active h5,
+        .wf-active h6,
+        .wf-active .the-subtitle {
+            font-family: 'Poppins';
+        }
+    </style>
+
+
 </head>
+
 
 <body>
 
@@ -36,46 +265,184 @@
             <li class="link-item"><a href="#" class="link">editor</a></li>
         </ul>
     </nav>
-
-    <div class="download-btn">
-        <button id="countdown-btn" onclick="startCountdown()">Verify</button>
-        <p id="countdown"></p>
-    </div>
-
-
     <div class="blog" style="margin-top: 20px;">
-        <h1 class="title" id="title"></h1>
-        <p class="published"><span>published at - Admin</span> on 2023/03/31</p>
+        <div class="download-btn">
+            <button id="countdown-btn" class="btn btn-success px-5" onclick="startCountdown()">Verify</button>
+            <p id="countdown"></p>
+        </div>
         <div class="article" id="article">
+            <div id="main-content-row" class="tie-row main-content-row">
+                <div class="main-content tie-col-md-8 tie-col-xs-12" role="main">
+                    <article id="the-post" class="container-wrapper post-content tie-standard">
+
+                        <header class="entry-header-outer">
+
+                            <nav id="breadcrumb"><a href="https://techvybes.com/"><span class="tie-icon-home"
+                                        aria-hidden="true"></span> Home</a><em class="delimiter">/</em><a
+                                    href="https://techvybes.com/category/technology/">Technology</a><em
+                                    class="delimiter">/</em><span class="current">Never Miss a Payment: Pay Your Water
+                                    Bill on Time with UPI</span></nav>
+                            <script
+                                type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BreadcrumbList","@id":"#Breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"name":"Home","@id":"https:\/\/techvybes.com\/"}},{"@type":"ListItem","position":2,"item":{"name":"Technology","@id":"https:\/\/techvybes.com\/category\/technology\/"}}]}</script>
+                            <div class="entry-header">
+
+                                <span class="post-cat-wrap"><a class="post-cat tie-cat-9"
+                                        href="https://techvybes.com/category/internet/">Internet</a><a
+                                        class="post-cat tie-cat-10"
+                                        href="https://techvybes.com/category/must-know/">Must Know</a><a
+                                        class="post-cat tie-cat-5"
+                                        href="https://techvybes.com/category/technology/">Technology</a></span>
+                                <h1 class="post-title entry-title">
+                                    Never Miss a Payment: Pay Your Water Bill on Time with UPI </h1>
+
+                            </div><!-- .entry-header /-->
+
+
+
+                        </header>
+                        <div class="featured-area">
+                            <div class="featured-area-inner">
+                                <figure class="single-featured-image"><img width="780" height="451"
+                                        src="https://techvybes.com/wp-content/uploads/2023/03/Never-Miss-a-Payment-Pay-Your-Water-Bill-on-Time-with-UPI.jpg"
+                                        class="attachment-jannah-image-post size-jannah-image-post wp-post-image" alt=""
+                                        decoding="async" data-main-img="1"></figure>
+                            </div>
+                        </div>
+
+                        <div class="entry-content entry clearfix">
+
+
+                            <p>Paying your water bill through UPI is a quick and convenient way to settle your
+                                utility
+                                bills from the comfort of your own home. UPI or Unified Payments Interface is a
+                                real-time payment system in India that facilitates instant fund transfer between
+                                bank
+                                accounts through mobile devices.</p>
+                            <h2>Requirements to Pay Water Bill through UPI</h2>
+                            <p>You need the following items to pay your water bill using UPI-</p>
+                            <h3>Mobile App with UPI Support</h3>
+                            <p>You must download and set up a UPI-compatible app on your smartphone.</p>
+                            <h3>Connected Bank Account Linked to The UPI App</h3>
+                            <p>By entering your account information and confirming your cellphone number, you
+                                must link
+                                your bank account to the UPI app.</p>
+                            <h3>VPA or UPI ID</h3>
+                            <p>To accept payments using UPI, you must generate a UPI ID or VPA, which is a
+                                unique
+                                identification number. You may create a UPI ID by choosing a username and
+                                connecting it
+                                to your bank account.</p>
+                            <h3>Water Bill Information</h3>
+                            <p>To make a payment, you must have the information from the water bill, including
+                                the
+                                bill’s total, the biller’s name, and the customer account number.</p>
+
+                        </div>
+                        <h3>UPI PIN</h3>
+                        <p>A 4-6-digit secret code known as a UPI PIN must be set to authenticate UPI
+                            transactions.
+                            You may create a UPI PIN according to your UPI app’s instructions.</p>
+                        <h2>Step-by-Step Guide: Paying Your Water Bill through UPI</h2>
+                        <p>&nbsp;</p>
+                        <ol>
+                            <li>Open your UPI app on your mobile device and select the “Bill Payment” option.
+                            </li>
+                            <li>Search for your water biller by name or through your account number. Once you
+                                find
+                                your water biller, click on “Pay Bill”.</li>
+                            <li>Enter the amount you wish to pay and confirm the payment.</li>
+                            <li>Select the bank account from which you want to make the payment.</li>
+                            <li>Enter your UPI PIN or authenticate the transaction through your mobile banking
+                                app.
+                            </li>
+                            <li>Once the transaction is completed successfully, you will receive a confirmation
+                                message on your mobile device.</li>
+                        </ol>
+                        <p>It’s important to ensure that you have sufficient funds in your account before making
+                            the
+                            payment. You should also check the due date of your water bill and make the payment
+                            before the deadline to avoid any late payment charges or penalties. UPI is a secure
+                            and
+                            reliable mode of payment, so you can be assured that your transaction is safe and
+                            protected.</p>
+                        <h3>Some additional information on how to pay your water bill through UPI:</h3>
+                        <ol>
+                            <li>Register for UPI: If you haven’t already, you’ll need to register for UPI with
+                                your
+                                bank. You can do this by downloading the UPI-enabled mobile app from your bank
+                                and
+                                following the registration process.</li>
+                            <li>Add your water biller: Once you’ve registered for UPI, you’ll need to add your
+                                water
+                                biller as a “Bill Payee”. To do this, open your UPI app and select the “Add
+                                Biller”
+                                option. Search for your water biller by name or through your account number, and
+                                add
+                                the details to your list of Bill Payees.</li>
+                            <li>Pay your water bill: When it’s time to pay your water bill, open your UPI app
+                                and
+                                select the “Bill Payment” option. Select your water biller from the list of Bill
+                                Payees, enter the amount you wish to pay, and confirm the payment. You’ll need
+                                to
+                                authenticate the transaction through your UPI PIN or mobile banking app.</li>
+                            <li>Check your transaction status: Once your payment is complete, you’ll receive a
+                                confirmation message on your mobile device. You can also check the status of
+                                your
+                                transaction by going to the “Transaction History” section of your UPI app.</li>
+                            <li>Benefits of paying through UPI: Paying your water bill through UPI is
+                                convenient,
+                                secure, and fast. You can do it from anywhere, at any time, without the need to
+                                visit a physical location or stand in line. Additionally, UPI transactions are
+                                protected by multi-factor authentication, making them more secure than
+                                traditional
+                                payment methods.</li>
+                        </ol>
+                        <h2>Conclusion</h2>
+                        <p>In conclusion, paying your water bill through UPI is a convenient, secure, and fast
+                            way
+                            to settle your utility bills. By following a few simple steps, you can pay your
+                            water
+                            bill from the comfort of your own home, without having to visit a physical location
+                            or
+                            stand in long lines. UPI transactions are protected by multi-factor authentication,
+                            making them more secure than traditional payment methods. With UPI, you can
+                            streamline
+                            your monthly bill payments and never miss a payment deadline. So why not switch to
+                            UPI
+                            and simplify your water bill payment process today?</p>
+
+
+
+
+                        <div id="post-extra-info">
+                            <div class="theiaStickySidebar">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </article><!-- #the-post /-->
+
+
+                </div>
+            </div>
+
         </div>
 
-    </div>
+        <div class="download-btn">
+            <button id="continue-btn" class="btn btn-success px-5" onclick="continueBtn()"
+                style="display: none;">Continue</button>
+            <p id="countdown1"></p>
+            <div id="redierct"></div>
+        </div>
 
-    <div class="download-btn">
-        <button id="continue-btn" onclick="continueBtn()" style="display: none;">Continue</button>
-        <p id="countdown1"></p>
-        <div id="linkDiv"></div>
-    </div>
 
-
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
-    <script src="./js/firebase.js"></script>
-    <script src="./js/app.js"></script>
-    <script>
-        const query = db.collection("blogs").limit(1)
-
-        query.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // Do something with the blog data
-                document.getElementById("article").innerHTML += `${doc.data().article}`
-                document.getElementById("title").innerHTML += `${doc.data().title}`
-                document.getElementById("tab-title").innerHTML += `${doc.data().title}`
-            });
-        }).catch((error) => {
-            console.log("Error getting documents: ", error);
-        });
-    </script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+        <script src="./js/firebase.js"></script>
+        <script src="./js/app.js"></script>
 
 </body>
 

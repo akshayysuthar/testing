@@ -5,27 +5,256 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="tab-title"></title>
+    <title>What’s The Difference Between A Dedicated Server And A Shared Hosting Server?</title>
 
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/editor.css">
     <link rel="stylesheet" href="./css/blog.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <style>
         .download-btn {
-            margin-top: 5rem;
-        }
-
-        .download-btn button {
-            margin-left: 10rem;
-        }
-
-        .download-btn p #linkDiv  .linkDiv{
-            margin-left: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
         }
     </style>
 
+    <link rel="stylesheet" id="wp-block-library-css"
+        href="https://techvybes.com/wp-includes/css/dist/block-library/style.min.css?ver=6.2" type="text/css"
+        media="all">
+    <style id="wp-block-library-theme-inline-css" type="text/css">
+        .wp-block-audio figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-audio figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-audio {
+            margin: 0 0 1em
+        }
+
+        .wp-block-code {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Menlo, Consolas, monaco, monospace;
+            padding: .8em 1em
+        }
+
+        .wp-block-embed figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-embed figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-embed {
+            margin: 0 0 1em
+        }
+
+        .blocks-gallery-caption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .blocks-gallery-caption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-image figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-image figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-image {
+            margin: 0 0 1em
+        }
+
+        .wp-block-pullquote {
+            border-bottom: 4px solid;
+            border-top: 4px solid;
+            color: currentColor;
+            margin-bottom: 1.75em
+        }
+
+        .wp-block-pullquote cite,
+        .wp-block-pullquote footer,
+        .wp-block-pullquote__citation {
+            color: currentColor;
+            font-size: .8125em;
+            font-style: normal;
+            text-transform: uppercase
+        }
+
+        .wp-block-quote {
+            border-left: .25em solid;
+            margin: 0 0 1.75em;
+            padding-left: 1em
+        }
+
+        .wp-block-quote cite,
+        .wp-block-quote footer {
+            color: currentColor;
+            font-size: .8125em;
+            font-style: normal;
+            position: relative
+        }
+
+        .wp-block-quote.has-text-align-right {
+            border-left: none;
+            border-right: .25em solid;
+            padding-left: 0;
+            padding-right: 1em
+        }
+
+        .wp-block-quote.has-text-align-center {
+            border: none;
+            padding-left: 0
+        }
+
+        .wp-block-quote.is-large,
+        .wp-block-quote.is-style-large,
+        .wp-block-quote.is-style-plain {
+            border: none
+        }
+
+        .wp-block-search .wp-block-search__label {
+            font-weight: 700
+        }
+
+        .wp-block-search__button {
+            border: 1px solid #ccc;
+            padding: .375em .625em
+        }
+
+        :where(.wp-block-group.has-background) {
+            padding: 1.25em 2.375em
+        }
+
+        .wp-block-separator.has-css-opacity {
+            opacity: .4
+        }
+
+        .wp-block-separator {
+            border: none;
+            border-bottom: 2px solid;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .wp-block-separator.has-alpha-channel-opacity {
+            opacity: 1
+        }
+
+        .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+            width: 100px
+        }
+
+        .wp-block-separator.has-background:not(.is-style-dots) {
+            border-bottom: none;
+            height: 1px
+        }
+
+        .wp-block-separator.has-background:not(.is-style-wide):not(.is-style-dots) {
+            height: 2px
+        }
+
+        .wp-block-table {
+            margin: 0 0 1em
+        }
+
+        .wp-block-table td,
+        .wp-block-table th {
+            word-break: normal
+        }
+
+        .wp-block-table figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-table figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-video figcaption {
+            color: #555;
+            font-size: 13px;
+            text-align: center
+        }
+
+        .is-dark-theme .wp-block-video figcaption {
+            color: hsla(0, 0%, 100%, .65)
+        }
+
+        .wp-block-video {
+            margin: 0 0 1em
+        }
+
+        .wp-block-template-part.has-background {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 1.25em 2.375em
+        }
+    </style>
+    <link rel="stylesheet" id="contact-form-7-css"
+        href="https://techvybes.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.7.4" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-base-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/base.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-styles-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/style.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-widgets-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/widgets.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-helpers-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/helpers.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-fontawesome5-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/fontawesome.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-ilightbox-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/ilightbox/dark-skin/skin.css?ver=6.0.1"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="tie-css-single-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/single.min.css?ver=6.0.1" type="text/css"
+        media="all">
+    <link rel="stylesheet" id="tie-css-print-css"
+        href="https://techvybes.com/wp-content/themes/jannah/assets/css/print.css?ver=6.0.1" type="text/css"
+        media="print">
+    <style id="tie-css-print-inline-css" type="text/css">
+        .wf-active .logo-text,
+        .wf-active h1,
+        .wf-active h2,
+        .wf-active h3,
+        .wf-active h4,
+        .wf-active h5,
+        .wf-active h6,
+        .wf-active .the-subtitle {
+            font-family: 'Poppins';
+        }
+    </style>
+
+
 </head>
+
 
 <body>
 
@@ -36,23 +265,188 @@
             <li class="link-item"><a href="#" class="link">editor</a></li>
         </ul>
     </nav>
-
-    <div class="download-btn">
-        <button id="countdown-btn" onclick="startCountdown()">Verify</button>
-        <p id="countdown"></p>
-    </div>
-
-
     <div class="blog" style="margin-top: 20px;">
-        <h1 class="title" id="title"></h1>
-        <p class="published"><span>published at - Admin</span> on 2023/03/31</p>
+        <div class="download-btn">
+            <button id="countdown-btn" class="btn btn-success px-5" onclick="startCountdown()">Verify</button>
+            <p id="countdown"></p>
+        </div>
         <div class="article" id="article">
+            <div class="background-overlay">
+                <div id="tie-container" class="site tie-container">
+                    <div id="tie-wrapper">
+                        <div id="content" class="site-content container">
+                            <div id="main-content-row" class="tie-row main-content-row">
+                                <div class="main-content tie-col-md-8 tie-col-xs-12" role="main">
+            
+            
+                                    <article id="the-post" class="container-wrapper post-content tie-standard">
+            
+            
+                                        <header class="entry-header-outer">            
+                                                <span class="post-cat-wrap"><a class="post-cat tie-cat-9"
+                                                        href="https://techvybes.com/category/internet/">Internet</a><a
+                                                        class="post-cat tie-cat-14"
+                                                        href="https://techvybes.com/category/linux-server/">Linux Server</a><a
+                                                        class="post-cat tie-cat-10"
+                                                        href="https://techvybes.com/category/must-know/">Must Know</a></span>
+                                                <h1 class="post-title entry-title">
+                                                    What’s The Difference Between A Dedicated Server And A Shared Hosting Server?
+                                                </h1>
+            
+                                            </div><!-- .entry-header /-->
+                                        </header><!-- .entry-header-outer /-->
+            
+                                        <div class="featured-area">
+                                            <div class="featured-area-inner">
+                                                <figure class="single-featured-image"><img width="780" height="433"
+                                                        src="https://techvybes.com/wp-content/uploads/2023/01/Dedicated_V_Shared.png"
+                                                        class="attachment-jannah-image-post size-jannah-image-post wp-post-image"
+                                                        alt="" decoding="async" data-main-img="1"></figure>
+                                            </div>
+                                        </div>
+                                        <div class="entry-content entry clearfix">
+            
+            
+                                            <p>When it comes to web hosting, there are two common types of hosting: shared and
+                                                dedicated. Both offer great benefits for web designers and agencies, but having a
+                                                firm grasp on the differences will help you choose the best option for your
+                                                business. A dedicated server is an online repository for software and data. In other
+                                                words, a dedicated server is a computer that runs as an independent entity. It is
+                                                not shared by other users and does not have to be accessed by everyone who needs it.
+                                            </p>
+                                            <p>A shared hosting server is like a virtual drive that is available to several users.
+                                                It gives each user access to the specific files they need and has to store the same
+                                                data. However, shared hosting is less powerful than dedicated hosting. Read on to
+                                                understand the key differences between these web hosting services.</p>
+                                            <h2>What is a Shared Server?</h2>
+                                            <p>A shared server is a virtual computer that is set up into a cloud-based data centre.
+                                                Multiple companies can share this space and use the hardware to store their data. If
+                                                you sign up for a shared server, you can access this virtual computer through a
+                                                virtual network that is also hosted by the cloud service.</p>
+                                            <p>What is great about shared servers is that you don’t need to worry about any of the
+                                                hardware or software settings. Your hosting provider will take care of these
+                                                settings and make sure that your computer is running as it should be. There is also
+                                                less risk of downtime since shared servers are constantly being monitored by others.
+                                            </p>
+                                            <h2>What is a Dedicated Server?</h2>
+                                            <p>A dedicated server is a virtual computer that is set up specifically for you and your
+                                                business. The computer is set up with each software application you need to run your
+                                                business. This includes your operating system and other software you may need, such
+                                                as email servers, databases, and security tools. An internet service provider (ISP)
+                                                that offers a dedicated server will handle all of these settings and applications
+                                                for you.</p>
+                                            <p>You will have access to the dedicated server through a private network that is set up
+                                                in a data centre, or server farm. This means that all of your network traffic is
+                                                routed through this network and you have no direct connection to the outside world.
+                                                You will have to use the internet via your ISP’s network.</p>
+
+                                            <h2>What is an Autonomous Server?</h2>
+                                            <p>An autonomous server is when your hosting service operates all of the hardware and
+                                                software settings on your dedicated server. This includes the operating system,
+                                                hardware, applications, and security settings. With an autonomous server, you do not
+                                                have to worry about any of these settings and can focus solely on running your
+                                                business.</p>
+                                            <p>When choosing between shared and a dedicated hosting server, you should take into
+                                                account how autonomous the server is. A server that is completely autonomous will be
+                                                more expensive but can provide more features and reliability. A shared server may be
+                                                less expensive but will have less features and reliability.<br>
+                                                Key Difference Between Dedicated Server and Shared Server</p>
+
+                                            <p>– An autonomous server is set up with all the hardware and software settings of the
+                                                dedicated server. This includes the operating system, hardware, applications, and
+                                                security settings. Worrying about any of these settings is like worrying about the
+                                                car while it’s being driven. Autonomous servers are more reliable and
+                                                feature-packed.</p>
+                                            <p>– A shared server is hosted by a cloud service provider. You have access to the
+                                                virtual server through a virtual network that is hosted by the cloud service. The
+                                                reliability and features of the shared server are dependent on the cloud service
+                                                provider.</p>
+                                            <h3>When to choose dedicated server</h3>
+                                            <p>A dedicated server is a great option for businesses that will be hosting a lot of
+                                                data and/or run a lot of software. These servers will be more expensive, but they
+                                                are a lot more reliable than shared servers. If your business will be creating a lot
+                                                of data or is a larger business, it is worth the investment to get a more reliable
+                                                server.</p>
+                                            <h3>When to choose shared server</h3>
+                                            <p>A shared server is a great option for businesses with low data requirements and/or
+                                                that don’t need a lot of software. It is also a good option if you want a more
+                                                budget-friendly option than a dedicated server. However, a shared server does not
+                                                provide the reliability that a dedicated server does. If reliability is less
+                                                important to you than price, a shared server is a better option.</p>
+                                            <h2>Final Words</h2>
+                                            <p>Choosing a web host is one of the most important decisions you will make as a web
+                                                designer or web agency. By choosing the right host, you will be able to focus on the
+                                                work that matters and grow your business. After all, a perfect website is useless
+                                                without the right host. Follow these tips to choose the best host for your business.
+                                            </p>
+                                            <p>A dedicated server is a virtual computer that is set up specifically for you and your
+                                                business. The computer is set up with each software application you need to run your
+                                                business. This includes your operating system and other software you may need, such
+                                                as email servers, databases, and security tools. An internet service provider (ISP)
+                                                that offers a dedicated server will handle all of these settings and applications
+                                                for you.</p>
+                                            <p>A shared server is a virtual computer that is hosted into a cloud-based data centre.
+                                                Multiple companies can share this space and use the hardware to store their data. If
+                                                you sign up for a shared server, you can access this virtual computer through a
+                                                virtual network that is also hosted by the cloud service.</p>
+                                            <p>An autonomous server is when your hosting service operates all of the hardware and
+                                                software settings on your dedicated server. This includes the operating system,
+                                                hardware, applications, and security settings. With an autonomous server, you do not
+                                                have to worry about any of these settings and can focus solely on running your
+                                                business.</p>
+                                            <p>A dedicated server is a virtual computer that is set up specifically for you and your
+                                                business. The computer is set up with each software application you need to run your
+                                                business. This includes your operating system and other software you may need, such
+                                                as email servers, databases, and security tools. An internet service provider (ISP)
+                                                that offers a dedicated server will handle all of these settings and applications
+                                                for you.</p>
+                                            <p>Choosing a web host is one of the most important decisions you will make as a web
+                                                designer or web agency. By choosing the right host, you will be able to focus on the
+                                                work that matters and grow your business. After all, a perfect website is useless
+                                                without the right host. Follow these tips to choose the best host for your business.
+                                            </p>
+                                            <h3>Ecommerce Web Hosting</h3>
+                                            <p>Ecommerce hosting lets you sell products and services online. Some hosting providers
+                                                also provide shopping carts, payment gateways, and other tools for ecommerce sites.
+                                                Shared hosting allows for multiple websites to be hosted on the same server. It
+                                                comes with certain limitations, such as how much traffic a server can handle and how
+                                                much disk space each website receives. A dedicated server gives you more control
+                                                over your hosting environment, such as how much disk space each website receives.
+                                                It’s best to use a dedicated server if you need to host an ecommerce website.</p>
+                                            <h2>Security</h2>
+                                            <p>A host makes it easy for hackers to gain access to your server. It also means that
+                                                you have to be extra cautious about security. You need to change your passwords on
+                                                every website you log in to, and make sure they’re different from your email address
+                                                and financial accounts. It’s also important to change your passwords every 60 days
+                                                and make them hard to guess. Make sure there’s no sign of malicious activity or
+                                                activity that doesn’t make</p>
+            
+            
+                                        </div><!-- .entry-content /-->
+            
+                                        <div id="post-extra-info">
+                                            <div class="theiaStickySidebar">
+                                            </div>
+                                        </div>
+            
+                                        <div class="clearfix"></div>
+                                        <script id="tie-schema-json"
+                                            type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Article","dateCreated":"2023-01-25T02:45:42+05:30","datePublished":"2023-01-25T02:45:42+05:30","dateModified":"2023-01-25T02:45:42+05:30","headline":"What\u2019s The Difference Between A Dedicated Server And A Shared Hosting Server?","name":"What\u2019s The Difference Between A Dedicated Server And A Shared Hosting Server?","keywords":[],"url":"https:\/\/techvybes.com\/whats-the-difference-between-a-dedicated-server-and-a-shared-hosting-server\/","description":"When it comes to web hosting, there are two common types of hosting: shared and dedicated. Both offer great benefits for web designers and agencies, but having a firm grasp on the differences will hel","copyrightYear":"2023","articleSection":"Internet,Linux Server,Must Know","articleBody":"When it comes to web hosting, there are two common types of hosting: shared and dedicated. Both offer great benefits for web designers and agencies, but having a firm grasp on the differences will help you choose the best option for your business. A dedicated server is an online repository for software and data. In other words, a dedicated server is a computer that runs as an independent entity. It is not shared by other users and does not have to be accessed by everyone who needs it.\r\n\r\nA shared hosting server is like a virtual drive that is available to several users. It gives each user access to the specific files they need and has to store the same data. However, shared hosting is less powerful than dedicated hosting. Read on to understand the key differences between these web hosting services.\r\nWhat is a Shared Server?\r\nA shared server is a virtual computer that is set up into a cloud-based data centre. Multiple companies can share this space and use the hardware to store their data. If you sign up for a shared server, you can access this virtual computer through a virtual network that is also hosted by the cloud service.\r\n\r\nWhat is great about shared servers is that you don\u2019t need to worry about any of the hardware or software settings. Your hosting provider will take care of these settings and make sure that your computer is running as it should be. There is also less risk of downtime since shared servers are constantly being monitored by others.\r\nWhat is a Dedicated Server?\r\nA dedicated server is a virtual computer that is set up specifically for you and your business. The computer is set up with each software application you need to run your business. This includes your operating system and other software you may need, such as email servers, databases, and security tools. An internet service provider (ISP) that offers a dedicated server will handle all of these settings and applications for you.\r\n\r\nYou will have access to the dedicated server through a private network that is set up in a data centre, or server farm. This means that all of your network traffic is routed through this network and you have no direct connection to the outside world. You will have to use the internet via your ISP\u2019s network.\r\nWhat is an Autonomous Server?\r\nAn autonomous server is when your hosting service operates all of the hardware and software settings on your dedicated server. This includes the operating system, hardware, applications, and security settings. With an autonomous server, you do not have to worry about any of these settings and can focus solely on running your business.\r\n\r\nWhen choosing between shared and a dedicated hosting server, you should take into account how autonomous the server is. A server that is completely autonomous will be more expensive but can provide more features and reliability. A shared server may be less expensive but will have less features and reliability.\r\nKey Difference Between Dedicated Server and Shared Server\r\n\r\n\u2013 An autonomous server is set up with all the hardware and software settings of the dedicated server. This includes the operating system, hardware, applications, and security settings. Worrying about any of these settings is like worrying about the car while it\u2019s being driven. Autonomous servers are more reliable and feature-packed.\r\n\r\n\u2013 A shared server is hosted by a cloud service provider. You have access to the virtual server through a virtual network that is hosted by the cloud service. The reliability and features of the shared server are dependent on the cloud service provider.\r\nWhen to choose dedicated server\r\nA dedicated server is a great option for businesses that will be hosting a lot of data and\/or run a lot of software. These servers will be more expensive, but they are a lot more reliable than shared servers. If your business will be creating a lot of data or is a larger business, it is worth the investment to get a more reliable server.\r\nWhen to choose shared server\r\nA shared server is a great option for businesses with low data requirements and\/or that don\u2019t need a lot of software. It is also a good option if you want a more budget-friendly option than a dedicated server. However, a shared server does not provide the reliability that a dedicated server does. If reliability is less important to you than price, a shared server is a better option.\r\nFinal Words\r\nChoosing a web host is one of the most important decisions you will make as a web designer or web agency. By choosing the right host, you will be able to focus on the work that matters and grow your business. After all, a perfect website is useless without the right host. Follow these tips to choose the best host for your business.\r\n\r\nA dedicated server is a virtual computer that is set up specifically for you and your business. The computer is set up with each software application you need to run your business. This includes your operating system and other software you may need, such as email servers, databases, and security tools. An internet service provider (ISP) that offers a dedicated server will handle all of these settings and applications for you.\r\n\r\nA shared server is a virtual computer that is hosted into a cloud-based data centre. Multiple companies can share this space and use the hardware to store their data. If you sign up for a shared server, you can access this virtual computer through a virtual network that is also hosted by the cloud service.\r\n\r\nAn autonomous server is when your hosting service operates all of the hardware and software settings on your dedicated server. This includes the operating system, hardware, applications, and security settings. With an autonomous server, you do not have to worry about any of these settings and can focus solely on running your business.\r\n\r\nA dedicated server is a virtual computer that is set up specifically for you and your business. The computer is set up with each software application you need to run your business. This includes your operating system and other software you may need, such as email servers, databases, and security tools. An internet service provider (ISP) that offers a dedicated server will handle all of these settings and applications for you.\r\n\r\nChoosing a web host is one of the most important decisions you will make as a web designer or web agency. By choosing the right host, you will be able to focus on the work that matters and grow your business. After all, a perfect website is useless without the right host. Follow these tips to choose the best host for your business.\r\nEcommerce Web Hosting\r\nEcommerce hosting lets you sell products and services online. Some hosting providers also provide shopping carts, payment gateways, and other tools for ecommerce sites. Shared hosting allows for multiple websites to be hosted on the same server. It comes with certain limitations, such as how much traffic a server can handle and how much disk space each website receives. A dedicated server gives you more control over your hosting environment, such as how much disk space each website receives. It\u2019s best to use a dedicated server if you need to host an ecommerce website.\r\nSecurity\r\nA host makes it easy for hackers to gain access to your server. It also means that you have to be extra cautious about security. You need to change your passwords on every website you log in to, and make sure they\u2019re different from your email address and financial accounts. It\u2019s also important to change your passwords every 60 days and make them hard to guess. Make sure there\u2019s no sign of malicious activity or activity that doesn\u2019t make","publisher":{"@id":"#Publisher","@type":"Organization","name":"Techvybes.com","logo":{"@type":"ImageObject","url":"https:\/\/techvybes.com\/wp-content\/themes\/jannah\/assets\/images\/logo@2x.png"}},"sourceOrganization":{"@id":"#Publisher"},"copyrightHolder":{"@id":"#Publisher"},"mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/techvybes.com\/whats-the-difference-between-a-dedicated-server-and-a-shared-hosting-server\/","breadcrumb":{"@id":"#Breadcrumb"}},"author":{"@type":"Person","name":"admin","url":"https:\/\/techvybes.com\/author\/admin\/"},"image":{"@type":"ImageObject","url":"https:\/\/techvybes.com\/wp-content\/uploads\/2023\/01\/Dedicated_V_Shared.png","width":1200,"height":450}}</script>
+                                    </article><!-- #the-post /-->
+            
+            
+            
+                                </div><!-- .main-content -->
+            
+        
+                </div><!-- #tie-container /-->
+            </div>
         </div>
 
     </div>
 
     <div class="download-btn">
-        <button id="continue-btn" onclick="continueBtn2()" style="display: none;">Continue</button>
+        <button id="continue-btn" onclick="downloadBtn()" style="display: none;">Continue</button>
         <p id="countdown2"></p>
         <div id="linkDiv"></div>
     </div>
@@ -60,23 +454,14 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
     <script src="./js/firebase.js"></script>
     <script src="./js/app.js"></script>
-    <script>
-        const query = db.collection("blogs").limit(1)
-
-        query.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // Do something with the blog data
-                document.getElementById("article").innerHTML += `${doc.data().article}`
-                document.getElementById("title").innerHTML += `${doc.data().title}`
-                document.getElementById("tab-title").innerHTML += `${doc.data().title}`
-            });
-        }).catch((error) => {
-            console.log("Error getting documents: ", error);
-        });
-    </script>
 
 </body>
 
 </html>
+
+

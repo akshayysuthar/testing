@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1160650118224185"
+        crossorigin="anonymous"></script> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog : Homepage</title>
+    <title>Homepage</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap"
         rel="stylesheet">
@@ -25,31 +27,51 @@
 
     <!-- blog section -->
     <section class="blogs-section">
+        <div class="blog-card">
+            <h1 class="blog-title"> What’s The Difference Between A Dedicated Server And A Shared Hosting Server?
+            </h1>
+            <a href="blog.html" class="btn dark">read</a>
+        </div>
+        <div class="blog-card">
+            <h1 class="blog-title"> Never Miss a Payment: Pay Your Water Bill on Time with UPI</h1>
+            <a href="blog1.html" class="btn dark">read</a>
+        </div>
     </section>
+
+    <section class="link-section"></section>
 
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
 
     <script src="js/firebase.js"></script>
     <script>
-        const blogSection = document.querySelector('.blogs-section');
-        const blogRef = db.collection("blogs");
+        const blogSection = document.querySelector('.link-section');
+        const blogRef = db.collection("telegram-post");
         blogRef
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     let data = doc.data();
                     blogSection.innerHTML += `
-    <div class="blog-card">
-        <h1 class="blog-title">${data.title}</h1>
-        // <p class="blog-overview">${data.article.substring(0, 200) + '...'}</p>
-        <a href="blog.html?id=${doc.id}" class="btn dark">read</a>
+                    <div class="blog-card">
+                        <h1 class="blog-title">${doc.id}</h1>
+
+        <h1 class="blog-title">1080p Link</h1>
+        <h3 class="blog-title"><a
+                href="akshayy.tk/blog.html?movie=${doc.id}&type=720p">akshayy.tk/blog.html?movie=${doc.id}&type=720p
+            </a></h1>
+            <h1 class="blog-title">720p Link</h1>
+            <h3 class="blog-title"><a
+                    href="akshayy.tk/blog.html?movie=${doc.id}&type=720p">akshayy.tk/blog.html?movie=${doc.id}&type=720p</a>
+                </h1>
     </div>
     `;
                 });
 
             })
     </script>
+
+
 
 </body>
 

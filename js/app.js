@@ -20,14 +20,14 @@ function continueBtn() {
   var countdownEl = document.getElementById("countdown1");
   var countdownBtn = document.getElementById("countdown-btn");
   var continueBtn = document.getElementById("continue-btn");
-  var linkDiv = document.getElementById("linkDiv");
+  var linkDiv = document.getElementById("redierct");
   var timeLeft = 1;
   countdownBtn.style.display = "none";
   continueBtn.style.display = "none";
   var countdownInterval = setInterval(function () {
     if (timeLeft <= 0) {
       clearInterval(countdownInterval);
-      linkDiv.innerHTML += `<button onclick="openpostPage()" style="display: block;">Continue</button>`;
+      linkDiv.innerHTML += `<button onclick="openpostPage()" class="btn btn-success px-5"  >Go to Download Link</button>`;
       continueBtn.style.display = "none";
       countdownEl.style.display = "none";
     } else {
@@ -36,7 +36,7 @@ function continueBtn() {
     timeLeft -= 1;
   }, 1000);
 }
-function continueBtn2() {
+function downloadBtn() {
   var countdownEl = document.getElementById("countdown2");
   var countdownBtn = document.getElementById("countdown-btn");
   var continueBtn = document.getElementById("continue-btn");
@@ -66,37 +66,6 @@ function openpostPage(blogId) {
   window.location.href = `blog1.html?movie=${movie}&type=${type}`;
 }
 
-
-// db.collection("telegram-post")
-//   .doc(movie)
-//   .get()
-//   .then((doc) => {
-//     function getlink (type) {
-//       if (type == "720p") {
-//         console.log(data.link720p)
-//       }
-//       else {
-//         console.log(doc.data().link1080p)
-//       }
-//     }
-
-//   });
-
-// const query = db.collection("blogs").limit(1)
-
-// query.get().then((querySnapshot) => {
-//   querySnapshot.forEach((doc) => {
-//     // Do something with the blog data
-//     document.getElementById("article").innerHTML += `${doc.data().article}`
-//     document.getElementById("title").innerHTML += `${doc.data().title}`
-//     document.getElementById("tab-title").innerHTML += `${doc.data().title}`
-//   });
-// }).catch((error) => {
-//   console.log("Error getting documents: ", error);
-// });
-
-// Get the type value from the URL query string
-// const urlParams = new URLSearchParams(window.location.search);
 const type = urlParams.get("type");
 
 // Get a reference to the Firestore collection for blogs
@@ -114,8 +83,8 @@ db.collection("telegram-post")
       // Create a link element with the specified link value
       const linkElement = document.createElement("a");
       linkElement.href = link;
-      linkElement.className = "linkDiv"
-      linkElement.textContent = "Read more";
+      linkElement.className = "linkDiv btn btn-success px-5"
+      linkElement.textContent = "Generate link";
       // Add the link element to the linkDiv element on the web page
       const linkDiv = document.getElementById("linkDiv");
       linkDiv.style.display ="none";

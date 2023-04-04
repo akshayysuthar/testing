@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,45 @@
 
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/editor.css">
+    <style>
+        div {
+            justify-content: center;
+            padding: 0cm;
+        }
+    </style>
 
 </head>
+
 <body>
-    
+
+<form id="form">
     <div class="blog">
-        <textarea type="text" class="title" placeholder="Blog title..."></textarea>
-        <textarea type="text" class="article" placeholder="Start writing here..."></textarea>
+        <div>
+            <label for="id" class="col-sm-2 col-form-label">id:</label>
+            <input type="text" class="" id="postId" placeholder="Start writing ID here..." name="id">
+        </div>
+        <div>
+            <label for="link1080p" ,class="col-sm-2 col-form-label">1080p Link:</label>
+            <input type="text" class="" id="link1080p" placeholder="Start writing 1080p Link here..." name="link1080p">
+        </div>
+        <div>
+            <label for="link720p" ,class="col-sm-2 col-form-label">720p Link:</label>
+            <input type="text" class="" id="link720p" placeholder="Start writing 720p here..." name="link720p">
+        </div>
+
     </div>
 
     <div class="blog-options">
-        <button class="btn dark publish-btn">publish</button>
+        <button type="submit" class="btn btn-success">Upload This Movie</button>
     </div>
+</form>
 
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
 
     <script src="./js/firebase.js"></script>
-    <script src="./js/editor.js"></script>
+    <script src="./js/add-movie.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<style>
+    #form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <form id="form">
+        <div class="mb-3 row container m-5 ">
+            <label for="id" class="col-sm-2 col-form-label">id:</label>
+            <div class="col-sm-10 p-2">
+                <input type="text" id="postId" name="id">
+            </div>
+            <label for="link1080p" ,class="col-sm-2 col-form-label">1080p Link:</label>
+            <div class="col-sm-10">
+                <input type="text" id="link1080p" name="link1080p">
+            </div>
+            <label for="link720p" ,class="col-sm-2 col-form-label">720p Link:</label>
+            <div class="col-sm-10">
+                <input type="text" id="link720p" name="link720p">
+            </div>
+        </div>
+        
+    </div>
+    <button type="submit">Upload This Movie</button>
+
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="./js/firebase.js"></script>
+    <script src="./js/add-movie.js"></script>
+</body>
+
+</html>

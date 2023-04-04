@@ -44,7 +44,8 @@ textarea::-webkit-scrollbar-thumb{
 }
 
 .title,
-.article{
+.article,
+.article1{
     width: 100%;
     min-height: 100px;
     height: auto;
