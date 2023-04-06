@@ -21,17 +21,34 @@
     <button id="continue-btn" onclick="continueBtn()" style="display: none;">Continue</button>
     <p id="countdown1"></p>
     <div id="linkDiv"></div>
+    <button id="myButton">Click me!</button>
+
 </div>
 
     <script>
 function getMovieNameAndType() {
   const url = document.getElementById("url").value;
   const parts = url.split("&");
-  const movieName = parts[0].split("/").pop();
+  // const movieName = parts[0].split("/").pop();
   const movieType = parts[1];
   document.getElementById("movieName").textContent = "Movie Name: " + movieName;
   document.getElementById("movieType").textContent = "Movie Type: " + movieType;
 }
+// Get a reference to the button element
+const button = document.getElementById('myButton');
+
+// Listen for a click event on the button
+button.addEventListener('click', () => {
+  // Construct the URL for the target page based on the movie and quality parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieName = urlParams.get('id');
+  const quality = movieType;
+  const targetUrl = `https://akshayy.tk/page.html?movie=${movieName}&${quality}`;
+
+  // Redirect the user to the target page
+  window.location.href = targetUrl;
+});
+
 
 </script>
   </body>
