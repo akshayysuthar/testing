@@ -29,7 +29,7 @@
 function getMovieNameAndType() {
   const url = document.getElementById("url").value;
   const parts = url.split("&");
-  const movieName = parts[0].split("/").pop();
+  const movieName = parts[0].split("?").pop();
   const movieType = parts[1];
   document.getElementById("movieName").textContent = "Movie Name: " + movieName;
   document.getElementById("movieType").textContent = "Movie Type: " + movieType;
