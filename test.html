@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Get Movie Name and Type from URL</title>
+  </head>
+  <body>
+    <h1>Get Movie Name and Type from URL</h1>
+    <form>
+      <label for="url">Enter URL:</label>
+      <input type="text" id="url" name="url">
+      <button type="button" onclick="getMovieNameAndType()">Get Movie Name and Type</button>
+    </form>
+    <p id="movieName"></p>
+    <p id="movieType"></p>
 <div>
     <button id="countdown-btn" onclick="startCountdown()">Verify</button>
     <p id="countdown"></p>
@@ -7,6 +22,20 @@
     <p id="countdown1"></p>
     <div id="linkDiv"></div>
 </div>
+
+    <script>
+function getMovieNameAndType() {
+  const url = document.getElementById("url").value;
+  const parts = url.split("&");
+  const movieName = parts[0].split("/").pop();
+  const movieType = parts[1];
+  document.getElementById("movieName").textContent = "Movie Name: " + movieName;
+  document.getElementById("movieType").textContent = "Movie Type: " + movieType;
+}
+
+</script>
+  </body>
+</html>
 
 
 
