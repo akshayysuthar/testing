@@ -29,7 +29,7 @@
 function getMovieNameAndType() {
   const url = document.getElementById("url").value;
   const parts = url.split("&");
-  // const movieName = parts[0].split("/").pop();
+  const movieName = parts[0].split("/").pop();
   const movieType = parts[1];
   document.getElementById("movieName").textContent = "Movie Name: " + movieName;
   document.getElementById("movieType").textContent = "Movie Type: " + movieType;
@@ -41,9 +41,9 @@ const button = document.getElementById('myButton');
 button.addEventListener('click', () => {
   // Construct the URL for the target page based on the movie and quality parameters
   const urlParams = new URLSearchParams(window.location.search);
-  const movieName = urlParams.get('id');
-  const quality = movieType;
-  const targetUrl = `https://akshayy.tk/page.html?movie=${movieName}&${quality}`;
+  // const movieName = urlParams.get('id');
+  // const quality = movieType;
+  const targetUrl = `https://akshayy.tk/page.html?movie=${movieName}&${movieType}`;
 
   // Redirect the user to the target page
   window.location.href = targetUrl;
