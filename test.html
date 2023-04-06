@@ -29,10 +29,10 @@
 function getMovieNameAndType() {
   const url = document.getElementById("url").value;
   const parts = url.split("&");
-  const movieName = parts[0].split("?").pop();
-  const movieType = parts[1];
-  document.getElementById("movieName").textContent = "Movie Name: " + movieName;
-  document.getElementById("movieType").textContent = "Movie Type: " + movieType;
+  const movieid = parts[0].split("?").pop();
+  const movieq = parts[1];
+  document.getElementById("movieName").textContent = "Movie Name: " + movieid;
+  document.getElementById("movieType").textContent = "Movie Type: " + movieq;
 }
 // Get a reference to the button element
 const button = document.getElementById('myButton');
@@ -43,7 +43,7 @@ button.addEventListener('click', () => {
   const urlParams = new URLSearchParams(window.location.search);
   // const movieName = urlParams.get('id');
   // const quality = movieType;
-  const targetUrl = `https://akshayy.tk/page.html?movie=${movieName}&${movieType}`;
+  const targetUrl = `https://akshayy.tk/testing/blog.html?movie=${movieid}&${movieq}`;
 
   // Redirect the user to the target page
   window.location.href = targetUrl;
