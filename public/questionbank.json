@@ -1,0 +1,184 @@
+[
+  {
+    "class": 10,
+    "board": "GSEB",
+    "subject": "Science",
+    "chapters": [
+      {
+        "id": 1,
+        "name": "Chemical Reactions and Equations",
+        "sections": [
+          {
+            "type": "InText Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Why should a magnesium ribbon be cleaned before burning in air?",
+                "answer": "A magnesium ribbon should be cleaned before burning in air because magnesium reacts with oxygen slowly to form magnesium oxide, which prevents the burning of magnesium. The layer of magnesium oxide should be removed by sandpaper."
+              },
+              {
+                "id": 2,
+                "question": "Write the balanced equation for the following chemical reactions.\n(i) Hydrogen + Chlorine → Hydrogen chloride\n(ii) Barium chloride + Aluminium sulphate → Barium sulphate + Aluminium chloride.",
+                "answer": {
+                  "i": "H2 + Cl2 → 2HCl",
+                  "ii": "3BaCl2 + Al2(SO4)3 → 3BaSO4 + 2AlCl3"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Textbook Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Which of the following statements about the reaction below are incorrect?\n2PbO(s) + C(s) → 2Pb(s) + CO2(g)\n(a) Lead is getting reduced.\n(b) Carbon dioxide is getting oxidised.\n(c) Carbon is getting oxidised.\n(d) Lead oxide is getting reduced.\n(i) (a) and (b)\n(ii) (a) and (c)\n(iii) (a), (b) and (c)\n(iv) all",
+                "answer": "(i) (a) and (b)"
+              },
+              {
+                "id": 2,
+                "question": "Fe2O3 + 2Al → Al2O3 + 2Fe\nThe above reaction is an example of\n(a) combination reaction.\n(b) double displacement reaction.\n(c) decomposition reaction.\n(d) displacement reaction.",
+                "answer": "(d) displacement reaction"
+              },
+              {
+                "id": 3,
+                "question": "Translate the following statements into chemical equations and then balance them.\n(a) Hydrogen gas combines with nitrogen to form ammonia.\n(b) Hydrogen sulphide gas burns in air to give water and sulphur dioxide.\n(c) Barium chloride reacts with aluminium sulphate to give aluminium chloride and a precipitate of barium sulphate.\n(d) Potassium metal reacts with water to give potassium hydroxide and hydrogen gas.",
+                "answer": {
+                  "a": "3H2(g) + N2(g) → 2NH3(g)",
+                  "b": "2H2S(g) + 3O2(g) → 2H2O(l) + 2SO2(g)",
+                  "c": "3BaCl2(aq) + Al2(SO4)3(aq) → 2AlCl3(aq) + 3BaSO4(s)",
+                  "d": "2K(s) + 2H2O(l) → 2KOH(aq) + H2(g)"
+                }
+              },
+              {
+                "id": 4,
+                "question": "Balance the following chemical equations.\n(a) HNO3 + Ca(OH)2 → Ca(NO3)2 + H2O\n(b) NaOH + H2SO4 → Na2SO4 + H2O\n(c) NaCl + AgNO3 → AgCl + NaNO3\n(d) BaCl2 + H2SO4 → BaSO4 + HCl",
+                "answer": {
+                  "a": "2HNO3(aq) + Ca(OH)2(aq) → Ca(NO3)2(aq) + 2H2O(l)",
+                  "b": "2NaOH(aq) + H2SO4(aq) → Na2SO4(aq) + 2H2O(l)",
+                  "c": "NaCl(aq) + AgNO3(aq) → AgCl(s) + NaNO3(aq)",
+                  "d": "BaCl2(aq) + H2SO4(aq) → BaSO4(s) + 2HCl(aq)"
+                }
+              },
+              {
+                "id": 5,
+                "question": "Why do we apply paint on iron articles?",
+                "answer": "We apply paint on iron articles so as to prevent it from rusting. When the surface of iron is coated with paint, its surface does not come in contact with oxygen and moisture, therefore, rusting does not take place."
+              },
+              {
+                "id": 6,
+                "question": "Oil and fat containing food items are flushed with nitrogen. Why?",
+                "answer": "The food items containing oil and fat are flushed with nitrogen because oil and fat become rancid on oxidation, which has a bad taste and smell. The nitrogen flushing prevents the oxidation of food so that it does not become rancid."
+              },
+              {
+                "id": 7,
+                "question": "Explain the following terms with one example each.\n(a) Corrosion\n(b) Rancidity",
+                "answer": {
+                  "a": "Corrosion: It is a process in which metal reacts with substances like moisture and gases present in the atmosphere to form surface compounds. For example, iron reacts with oxygen in the presence of moisture and forms rust.",
+                  "b": "Rancidity: It is a process in which food material gets spoiled when it comes in contact with oxygen, leading to a change in taste and smell. For example, butter gets spoiled due to oxidation at room temperature if kept for a longer time."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": 10,
+    "board": "GSEB",
+    "subject": "Social Science",
+    "chapters": [
+      {
+        "id": 1,
+        "name": "Heritage of India",
+        "sections": [
+          {
+            "type": "Detailed Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Give detail of the Aryan and Dravidian Culture.",
+                "answer": {
+                  "Dravidians": [
+                    "They originally belonged to India and were descendants of the Stone Age civilization.",
+                    "Created the Mohenjodaro culture and had their own language and culture.",
+                    "Introduced the worship of nature, animals, and deities, influencing the concept of Parvati and Shiva as mother and father.",
+                    "Developed traditions like using 'dhup', 'deep', and 'aarti' in worship.",
+                    "They excelled in crafts and arts like weaving, spinning, and boat-making.",
+                    "After Aryan dominance, many Dravidians migrated to South India, contributing to languages like Tamil, Telugu, Kannada, and Malayalam."
+                  ],
+                  "Aryans": [
+                    "Nordic-Aryans created the Aryan civilization and were nature lovers who worshipped natural elements.",
+                    "Inhabited the Aryavarta region, also known as 'Sapta Sindhu', extending to Mithila in the east and Vindhyachal in the south.",
+                    "Contributed to practices like performing yagyas, reciting Vedas, and composing hymns.",
+                    "Spread across Bharatbhumi, Bharatkhand, and Bharat Varsha, named after the Arya Bharat or Bharat tribe."
+                  ]
+                }
+              },
+              {
+                "id": 2,
+                "question": "Explain the meaning of culture and give its details.",
+                "answer": "Culture is the sum of habits, values, customs, traditions, and lifestyles of humans. It encompasses behavioral patterns, interactions, traditions, and beliefs passed through generations. Examples include Hindu culture, Gujarati culture, and American culture."
+              }
+            ]
+          },
+          {
+            "type": "Pointwise Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Explain our Constitutional duties for preservation & conservation of heritage.",
+                "answer": [
+                  "Indian heritage reflects cultural amalgamation and artistic richness.",
+                  "It is our moral and primary duty to preserve and conserve our heritage.",
+                  "Citizens should protect ancient memorials and places of historical importance.",
+                  "Article 51 (A) of the Constitution describes duties such as:",
+                  "Understanding and preserving harmonious culture.",
+                  "Maintaining the natural environment and showing compassion towards living creatures.",
+                  "Protecting public property and refraining from violence."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Short Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "What is the other name by which Aryans were called?",
+                "answer": "Aryans were also called Nordic-Aryans and Aiyavrats."
+              },
+              {
+                "id": 2,
+                "question": "Write a short note on Negritoit (Habsi).",
+                "answer": "Negritoit or Negrose were ancient inhabitants of India, migrating from Africa via Baluchistan. They were black, had curly hair, and were 4-5 feet tall."
+              }
+            ]
+          },
+          {
+            "type": "Multiple Choice Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "The word ‘Lokmata’ is used for:",
+                "options": ["Bharat", "Nature", "Rivers", "Paniharies"],
+                "answer": "Rivers"
+              },
+              {
+                "id": 2,
+                "question": "Find out the correct match.",
+                "options": [
+                  "Shardapeeth – Somnath",
+                  "Polo Festival – Vadnagar",
+                  "Northern Dance Festival – Modhera",
+                  "Sidi Saiyed Grill – Bhavnagar"
+                ],
+                "answer": "Northern Dance Festival – Modhera"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
