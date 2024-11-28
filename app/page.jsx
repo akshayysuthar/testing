@@ -1,158 +1,163 @@
-"use client";
-import { useState, useEffect } from "react";
-import { ClassSelector } from "@/components/ClassSelector";
-import { SubjectSelector } from "@/components/SubjectSelector";
-import { ChapterSelector } from "@/components/ChapterSelector";
-import { QuestionSelector } from "@/components/QuestionSelector";
-import { GeneratedExam } from "@/components/GeneratedExam";
-import { PdfDownload } from "@/components/PdfDownload";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+'use client'
+
+import { useState, useEffect } from 'react'
+import { ClassSelector } from '@/components/ClassSelector'
+import { SubjectSelector } from '@/components/SubjectSelector'
+import { ChapterSelector } from '@/components/ChapterSelector'
+import { GeneratedExam } from '@/components/GeneratedExam'
+import { PdfDownload } from '@/components/PdfDownload'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 export default function ExamPaperGenerator() {
-  const [generationType, setGenerationType] = useState(null);
-  const [selectedClass, setSelectedClass] = useState(null);
-  const [selectedBoard, setSelectedBoard] = useState(null);
-  const [selectedMedium, setSelectedMedium] = useState(null);
-  const [selectedSubject, setSelectedSubject] = useState(null);
-  const [selectedChapters, setSelectedChapters] = useState([]);
-  const [selectedQuestions, setSelectedQuestions] = useState([]);
-  const [totalMarks, setTotalMarks] = useState(100);
-  const [remainingMarks, setRemainingMarks] = useState(100);
-  const [subjectData, setSubjectData] = useState([]);
-  const [questionBankData, setQuestionBankData] = useState([]);
+  const [generationType, setGenerationType] = useState(null)
+  const [selectedClass, setSelectedClass] = useState(null)
+  const [selectedBoard, setSelectedBoard] = useState(null)
+  const [selectedMedium, setSelectedMedium] = useState(null)
+  const [selectedSubject, setSelectedSubject] = useState(null)
+  const [selectedQuestions, setSelectedQuestions] = useState([])
+  const [totalMarks, setTotalMarks] = useState(80)
+  const [subjectData, setSubjectData] = useState([])
+  const [questionBankData, setQuestionBankData] = useState([])
+  const [generatedExam, setGeneratedExam] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const subjectResponse = await fetch("/data.json");
-        const subjectData = await subjectResponse.json();
-        console.log(subjectData); // Logs the data from the JSON file
-        setSubjectData(subjectData);
+        const subjectResponse = await fetch("./data.json")
+        const subjectData = await subjectResponse.json()
+        setSubjectData(subjectData)
 
-        const questionBankResponse = await await fetch("./questionbank.json");
-        const questionBankData = await questionBankResponse.json();
-        console.log(questionBankData);
-        
-        setQuestionBankData(questionBankData);
+        const questionBankResponse = await fetch("./questionbank.json")
+        const questionBankData = await questionBankResponse.json()
+        setQuestionBankData(questionBankData)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
 
-  const handleGenerationTypeChange = (type) => {
-    setGenerationType(type);
-    setSelectedSubject(null);
-    setSelectedChapters([]);
-    setSelectedQuestions([]);
-    setRemainingMarks(totalMarks);
-  };
+    // Load saved state from localStorage
+    const savedClass = localStorage.getItem('selectedClass')
+    const savedBoard = localStorage.getItem('selectedBoard')
+    const savedMedium = localStorage.getItem('selectedMedium')
+    const savedSubject = localStorage.getItem('selectedSubject')
+    const savedTotalMarks = localStorage.getItem('totalMarks')
+    const savedGenerationType = localStorage.getItem('generationType')
+
+    if (savedClass) setSelectedClass(parseInt(savedClass))
+    if (savedBoard) setSelectedBoard(savedBoard)
+    if (savedMedium) setSelectedMedium(savedMedium)
+    if (savedSubject) setSelectedSubject(savedSubject)
+    if (savedTotalMarks) setTotalMarks(parseInt(savedTotalMarks))
+    if (savedGenerationType) setGenerationType(savedGenerationType)
+  }, [])
+
+  useEffect(() => {
+    // Save state to localStorage whenever it changes
+    if (selectedClass) localStorage.setItem('selectedClass', selectedClass.toString())
+    if (selectedBoard) localStorage.setItem('selectedBoard', selectedBoard)
+    if (selectedMedium) localStorage.setItem('selectedMedium', selectedMedium)
+    if (selectedSubject) localStorage.setItem('selectedSubject', selectedSubject)
+    localStorage.setItem('totalMarks', totalMarks.toString())
+    if (generationType) localStorage.setItem('generationType', generationType)
+  }, [selectedClass, selectedBoard, selectedMedium, selectedSubject, totalMarks, generationType])
 
   const handleTotalMarksChange = (e) => {
-    const newTotalMarks = parseInt(e.target.value) || 0;
-    setTotalMarks(newTotalMarks);
-    setRemainingMarks(newTotalMarks - (totalMarks - remainingMarks));
-  };
+    const newTotalMarks = parseInt(e.target.value) || 0
+    setTotalMarks(newTotalMarks)
+  }
+
+  const handleGenerate = () => {
+    setGeneratedExam(true)
+  }
+
+  const handleGenerationTypeChange = (type) => {
+    setGenerationType(type)
+  }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Exam Paper Generator</h1>
-      <div className="mb-4">
+    (<div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        Exam Paper Generator
+      </h1>
+      <div className="flex items-center justify-center mb-4">
         <button
           className={`mr-2 px-4 py-2 rounded ${
             generationType === "manual"
               ? "bg-blue-500 text-white"
               : "bg-gray-200"
           }`}
-          onClick={() => handleGenerationTypeChange("manual")}
-        >
+          onClick={() => handleGenerationTypeChange("manual")}>
           Manual Generate
         </button>
         <button
           className={`px-4 py-2 rounded ${
             generationType === "auto" ? "bg-blue-500 text-white" : "bg-gray-200"
           }`}
-          onClick={() => handleGenerationTypeChange("auto")}
-        >
+          onClick={() => handleGenerationTypeChange("auto")}>
           Auto Generate
         </button>
       </div>
-      <div className="mb-4">
-        <Label htmlFor="totalMarks">Total Marks</Label>
-        <Input
-          id="totalMarks"
-          type="number"
-          value={totalMarks}
-          onChange={handleTotalMarksChange}
-          className="w-24"
-        />
-      </div>
-      {generationType && (
+      <div className="space-y-4 grid grid-cols-1 justify-center gap-4 p-3">
         <ClassSelector
           subjectData={subjectData}
           onSelectClass={setSelectedClass}
           onSelectBoard={setSelectedBoard}
           onSelectMedium={setSelectedMedium}
-        />
-      )}
-      {selectedClass && selectedBoard && selectedMedium && (
-        <SubjectSelector
-          subjectData={subjectData}
-          classNumber={selectedClass}
-          board={selectedBoard}
-          medium={selectedMedium}
-          onSelectSubject={setSelectedSubject}
-        />
-      )}
-      {selectedSubject && generationType === "manual" && (
-        <ChapterSelector
-          subjectData={subjectData}
-          questionBankData={questionBankData}
-          classNumber={selectedClass}
-          board={selectedBoard}
-          medium={selectedMedium}
-          subject={selectedSubject}
-          onSelectChapters={setSelectedChapters}
-        />
-      )}
-      {selectedChapters.length > 0 && generationType === "manual" && (
-        <QuestionSelector
-          questionBankData={questionBankData}
-          classNumber={selectedClass}
-          board={selectedBoard}
-          medium={selectedMedium}
-          subject={selectedSubject}
-          chapters={selectedChapters}
-          onSelectQuestions={setSelectedQuestions}
-          totalMarks={totalMarks}
-          remainingMarks={remainingMarks}
-          setRemainingMarks={setRemainingMarks}
-        />
-      )}
-      {((selectedQuestions.length > 0 && generationType === "manual") ||
-        generationType === "auto") && (
+          initialClass={selectedClass}
+          initialBoard={selectedBoard}
+          initialMedium={selectedMedium} />
+        {selectedClass && selectedBoard && selectedMedium && (
+          <SubjectSelector
+            subjectData={subjectData}
+            classNumber={selectedClass}
+            board={selectedBoard}
+            medium={selectedMedium}
+            onSelectSubject={setSelectedSubject}
+            initialSubject={selectedSubject} />
+        )}
         <div>
+          <Label htmlFor="totalMarks">Total Marks</Label>
+          <Input
+            id="totalMarks"
+            type="number"
+            value={totalMarks}
+            onChange={handleTotalMarksChange}
+            className="w-24" />
+        </div>
+        {selectedSubject && (
+          <ChapterSelector
+            questionBankData={questionBankData.filter((item) =>
+              item.class === selectedClass &&
+              item.board === selectedBoard &&
+              item.subject === selectedSubject)}
+            onSelectQuestions={setSelectedQuestions} />
+        )}
+
+        <Button onClick={handleGenerate} disabled={selectedQuestions.length === 0}>
+          Generate Exam Paper
+        </Button>
+      </div>
+      {generatedExam && (
+        <div className="mt-8">
           <div id="examPaperContent">
             <GeneratedExam
-              questionBankData={questionBankData}
-              generationType={generationType}
+              selectedQuestions={selectedQuestions}
               classNumber={selectedClass}
               board={selectedBoard}
               medium={selectedMedium}
               subject={selectedSubject}
-              chapters={selectedChapters}
-              questions={selectedQuestions}
-              totalMarks={totalMarks}
-            />
+              totalMarks={totalMarks} />
           </div>
           <div className="mt-4 flex justify-center">
-            <PdfDownload contentId="examPaperContent" />
+            <PdfDownload contentId="examPaperContent" selectedQuestions={selectedQuestions} />
           </div>
         </div>
       )}
-    </div>
+    </div>)
   );
 }
+

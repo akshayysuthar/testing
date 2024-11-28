@@ -7,32 +7,35 @@ export function SubjectSelector({
   classNumber,
   board,
   medium,
-  onSelectSubject
+  onSelectSubject,
+  initialSubject
 }) {
   const [subjects, setSubjects] = useState([])
+  const [selectedSubject, setSelectedSubject] = useState(initialSubject)
 
   useEffect(() => {
     const filteredSubjects = subjectData
       .filter(item => item.class === classNumber && item.board === board)
       .flatMap(item => {
-        if (item.subject) return [item.subject];
+        if (item.subject) return [item.subject]
         if (item.subjects) {
           return item.subjects.filter(subject => 
             !subject.mediums || subject.mediums.some(m => m.language === medium)).map(subject => subject.name);
         }
-        return [];
-      });
-    setSubjects([...new Set(filteredSubjects)]);
+        return []
+      })
+    setSubjects([...new Set(filteredSubjects)])
   }, [subjectData, classNumber, board, medium])
 
   const handleSubjectChange = (value) => {
+    setSelectedSubject(value)
     onSelectSubject(value)
   }
 
   return (
-    (<div className="mb-4">
+    (<div>
       <Label htmlFor="subject">Subject</Label>
-      <Select onValueChange={handleSubjectChange}>
+      <Select onValueChange={handleSubjectChange} value={selectedSubject || undefined}>
         <SelectTrigger id="subject">
           <SelectValue placeholder="Select Subject" />
         </SelectTrigger>

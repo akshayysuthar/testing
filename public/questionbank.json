@@ -30,12 +30,12 @@
             "type": "Textbook Questions",
             "questions": [
               {
-                "id": 1,
+                "id": 11,
                 "question": "Which of the following statements about the reaction below are incorrect?\n2PbO(s) + C(s) → 2Pb(s) + CO2(g)\n(a) Lead is getting reduced.\n(b) Carbon dioxide is getting oxidised.\n(c) Carbon is getting oxidised.\n(d) Lead oxide is getting reduced.\n(i) (a) and (b)\n(ii) (a) and (c)\n(iii) (a), (b) and (c)\n(iv) all",
                 "answer": "(i) (a) and (b)"
               },
               {
-                "id": 2,
+                "id": 12,
                 "question": "Fe2O3 + 2Al → Al2O3 + 2Fe\nThe above reaction is an example of\n(a) combination reaction.\n(b) double displacement reaction.\n(c) decomposition reaction.\n(d) displacement reaction.",
                 "answer": "(d) displacement reaction"
               },

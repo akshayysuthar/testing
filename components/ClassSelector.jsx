@@ -6,11 +6,14 @@ export function ClassSelector({
   subjectData,
   onSelectClass,
   onSelectBoard,
-  onSelectMedium
+  onSelectMedium,
+  initialClass,
+  initialBoard,
+  initialMedium
 }) {
-  const [classNumber, setClassNumber] = useState(null)
-  const [board, setBoard] = useState(null)
-  const [medium, setMedium] = useState(null)
+  const [classNumber, setClassNumber] = useState(initialClass)
+  const [board, setBoard] = useState(initialBoard)
+  const [medium, setMedium] = useState(initialMedium)
   const [availableClasses, setAvailableClasses] = useState([])
   const [availableBoards, setAvailableBoards] = useState([])
   const [availableMediums, setAvailableMediums] = useState([])
@@ -33,11 +36,11 @@ export function ClassSelector({
     if (classNumber && board) {
       const mediums = [...new Set(
         subjectData.filter(item => item.class === classNumber && item.board === board).flatMap(item => {
-          if (item.medium) return [item.medium];
+          if (item.medium) return [item.medium]
           if (item.subjects) {
             return item.subjects.flatMap(subject => subject.mediums ? subject.mediums.map(m => m.language) : []);
           }
-          return [];
+          return []
         })
       )]
       setAvailableMediums(mediums)
@@ -64,7 +67,7 @@ export function ClassSelector({
   }
 
   return (
-    (<div className="mb-4 space-y-4">
+    (<div className="space-y-4">
       <div>
         <Label htmlFor="class">Class</Label>
         <Select onValueChange={handleClassChange} value={classNumber?.toString()}>
@@ -81,7 +84,7 @@ export function ClassSelector({
       {classNumber && (
         <div>
           <Label htmlFor="board">Board</Label>
-          <Select onValueChange={handleBoardChange} value={board || ''}>
+          <Select onValueChange={handleBoardChange} value={board || undefined}>
             <SelectTrigger id="board">
               <SelectValue placeholder="Select Board" />
             </SelectTrigger>
@@ -96,7 +99,7 @@ export function ClassSelector({
       {classNumber && board && (
         <div>
           <Label htmlFor="medium">Medium</Label>
-          <Select onValueChange={handleMediumChange} value={medium || ''}>
+          <Select onValueChange={handleMediumChange} value={medium || undefined}>
             <SelectTrigger id="medium">
               <SelectValue placeholder="Select Medium" />
             </SelectTrigger>
