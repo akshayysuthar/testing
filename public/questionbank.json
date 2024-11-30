@@ -5,16 +5,136 @@
     "subject": "Science",
     "chapters": [
       {
+        "id": 3,
+        "name": "Life Processes",
+        "Ch": "Chapter 6",
+        "class": 10,
+        "board": "GSEB",
+        "subject": "Science",
+        "sections": [
+          {
+            "type": "MCQs",
+            "questions": [
+              {
+                "id": 1,
+                "type": "MCQ",
+                "question": "The kidneys in human beings are a part of the system for –",
+                "options": {
+                  "a": "nutrition",
+                  "b": "respiration",
+                  "c": "excretion",
+                  "d": "transportation"
+                },
+                "answer": "c",
+                "marks": 1,
+                "image": "",
+                "isImage": false
+              },
+              {
+                "id": 2,
+                "type": "MCQ",
+                "question": "The xylem in plants are responsible for –",
+                "options": {
+                  "a": "transport of water",
+                  "b": "transport of food",
+                  "c": "transport of amino acids",
+                  "d": "transport of oxygen"
+                },
+                "answer": "a",
+                "marks": 1,
+                "image": "",
+                "isImage": false
+              }
+            ]
+          },
+          {
+            "type": "Short Answer Questions",
+            "questions": [
+              {
+                "id": 5,
+                "type": "Short Answer",
+                "question": "How are fats digested in our bodies? Where does this process take place?",
+                "answer": "Fats are digested in the small intestine. The secretion of liver, called bile, breaks down the large globules of fat into smaller globules. This is called emulsification of fats. The bile also makes the medium alkaline so that the pancreatic enzyme containing lipase further digest fats to form fatty acids. The alkaline medium is required for pancreatic enzyme to act on lipase.",
+                "marks": 2,
+                "image": "",
+                "isImage": false
+              },
+              {
+                "id": 6,
+                "type": "Short Answer",
+                "question": "What is the role of saliva in the digestion of food?",
+                "answer": "Saliva contains enzymes, salivary amylase and is released in our mouth. It breaks down starch into sugar (complex carbohydrates into simpler ones).",
+                "marks": 2,
+                "image": "",
+                "isImage": false
+              }
+            ]
+          },
+          {
+            "type": "Detailed Answer Questions",
+            "questions": [
+              {
+                "id": 30,
+                "type": "Detailed Answer",
+                "question": "Bile is made in the liver, stored in the gall bladder and passes into the small intestine. Describe the role of bile in digestion.",
+                "answer": "Bile provides the alkaline medium in the small intestine which further helps in the action of pancreatic amylase, lipase and trypsin (protease) to digest the food. It neutralises the acid that comes from the stomach.",
+                "marks": 3,
+                "image": "",
+                "isImage": false
+              },
+              {
+                "id": 7,
+                "type": "Detailed Answer",
+                "question": "What are the necessary conditions for autotrophic nutrition and what are its by-products?",
+                "answer": "For autotrophic nutrition to take place the conditions necessary are light, carbon dioxide and water should reach a cell which contains chlorophyll in it. Water first splits to release oxygen and hydrogen. This process is photolysis of water. Hydrogen then combines with carbon dioxide to form glucose. The by-product of autotrophic nutrition is oxygen, which is released through stomata.",
+                "marks": 3,
+                "image": "",
+                "isImage": false
+              }
+            ]
+          },
+          {
+            "type": "Very Short Answer Questions",
+            "questions": [
+              {
+                "id": 8,
+                "type": "Very Short Answer",
+                "question": "What is the mode of nutrition when organisms use simple substances like CO2 and water to prepare food inside the body?",
+                "answer": "Autotrophic.",
+                "marks": 1,
+                "image": "",
+                "isImage": false
+              },
+              {
+                "id": 9,
+                "type": "Very Short Answer",
+                "question": "What are enzymes?",
+                "answer": "Enzymes are bio-catalysts which help in faster biochemical processes.",
+                "marks": 1,
+                "image": "",
+                "isImage": false
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": 1,
+        "ChpaterNumer": 1,
+        "BoardWeightage": 20,
+        "Ch": "Chapter 1",
         "name": "Chemical Reactions and Equations",
         "sections": [
           {
             "type": "InText Questions",
+
             "questions": [
               {
                 "id": 1,
                 "question": "Why should a magnesium ribbon be cleaned before burning in air?",
-                "answer": "A magnesium ribbon should be cleaned before burning in air because magnesium reacts with oxygen slowly to form magnesium oxide, which prevents the burning of magnesium. The layer of magnesium oxide should be removed by sandpaper."
+                "answer": "A magnesium ribbon should be cleaned before burning in air because magnesium reacts with oxygen slowly to form magnesium oxide, which prevents the burning of magnesium. The layer of magnesium oxide should be removed by sandpaper.",
+                "chapterNumber": "CH 1",
+                "marks": 5
               },
               {
                 "id": 2,
@@ -22,7 +142,9 @@
                 "answer": {
                   "i": "H2 + Cl2 → 2HCl",
                   "ii": "3BaCl2 + Al2(SO4)3 → 3BaSO4 + 2AlCl3"
-                }
+                },
+                "chapterNumber": "CH 1",
+                "marks": 5
               }
             ]
           },

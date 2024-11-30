@@ -1,53 +1,183 @@
-import { Button } from "@/components/ui/button"
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+import { Button } from "@/components/ui/button";
+import { jsPDF } from "jspdf";
 
 export function PdfDownload({
-  contentId,
-  selectedQuestions
+  selectedQuestions,
+  instituteName,
+  standard,
+  subject,
+  chapters,
+  studentName,
+  teacherName,
+  totalMarks,
 }) {
-  const handleDownload = async () => {
-    const examPaper = document.getElementById('examPaperContent')
-    if (!examPaper) return
 
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-    })
+  console.log(selectedQuestions);
+  
+  const handleDownload = () => {
+    if (!selectedQuestions || selectedQuestions.length === 0) {
+      console.error("No questions selected");
+      return;
+    }
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.width;
+    const pageHeight = doc.internal.pageSize.height;
+    const margin = 20;
+    const lineHeight = 7;
+    let yPos = margin;
 
-    // Add exam paper to PDF
-    const examCanvas = await html2canvas(examPaper)
-    const examImgData = examCanvas.toDataURL('image/png')
-    const pdfWidth = pdf.internal.pageSize.getWidth()
-    const pdfHeight = pdf.internal.pageSize.getHeight()
-    pdf.addImage(examImgData, 'PNG', 0, 0, pdfWidth, pdfHeight)
+    // Helper function to add a new page
+    const addNewPage = () => {
+      doc.addPage();
+      yPos = margin;
+    };
 
-    // Add answer key
-    pdf.addPage()
-    pdf.setFontSize(16)
-    pdf.text('Answer Key', pdfWidth / 2, 20, { align: 'center' })
-    
-    let yPosition = 30
-    selectedQuestions.forEach((question, index) => {
-      if (yPosition > pdfHeight - 20) {
-        pdf.addPage()
-        yPosition = 20
+    // Helper function to add text with word wrap
+    const addWrappedText = (
+      text,
+      x,
+      y,
+      maxWidth,
+      fontSize = 12,
+      bold = false
+    ) => {
+      if (bold) doc.setFont("helvetica", "bold");
+      else doc.setFont("helvetica", "normal");
+      doc.setFontSize(fontSize);
+      const lines = doc.splitTextToSize(text, maxWidth);
+      doc.text(lines, x, y);
+      return y + lineHeight * lines.length;
+    };
+
+    // Add exam paper header
+    yPos = addWrappedText(
+      instituteName,
+      margin,
+      yPos,
+      pageWidth - 2 * margin,
+      16,
+      true
+    );
+    yPos = addWrappedText(
+      `Standard: ${standard} Subject: ${subject}`,
+      margin,
+      yPos,
+      pageWidth - 2 * margin
+    );
+    yPos = addWrappedText(
+      `Chapter: ${chapters.join(", ")}`,
+      margin,
+      yPos,
+      pageWidth - 2 * margin
+    );
+    yPos = addWrappedText(
+      `Student's Name: ${studentName}`,
+      margin,
+      yPos,
+      pageWidth - 2 * margin
+    );
+    yPos = addWrappedText(
+      `Teacher Name: ${teacherName}`,
+      margin,
+      yPos,
+      pageWidth - 2 * margin
+    );
+    yPos += lineHeight;
+
+    // Group questions by type
+    const groupedQuestions = selectedQuestions.reduce((acc, question) => {
+      const key = question.type;
+      if (!acc[key]) {
+        acc[key] = [];
       }
-      pdf.setFontSize(12)
-      pdf.text(`${index + 1}. ${question.question}`, 10, yPosition)
-      yPosition += 10
-      pdf.setFontSize(10)
-      pdf.text(`Answer: ${question.answer}`, 20, yPosition)
-      yPosition += 15
-    })
+      acc[key].push(question);
+      return acc;
+    }, {});
 
-    pdf.save('exam_paper_with_answers.pdf')
-  }
+    // Add questions
+    Object.entries(groupedQuestions).forEach(([type, questions], typeIndex) => {
+      if (yPos > pageHeight - 40) addNewPage();
+      yPos = addWrappedText(
+        `Question ${typeIndex + 1}. ${type}`,
+        margin,
+        yPos,
+        pageWidth - 2 * margin,
+        14,
+        true
+      );
+      yPos += lineHeight / 2;
 
-  return (
-    (<Button onClick={handleDownload}>Download Exam Paper with Answer Key (PDF)
-          </Button>)
-  );
+      questions.forEach((question, index) => {
+        if (yPos > pageHeight - 40) addNewPage();
+
+        if (question.type === "MCQ") {
+          yPos = addWrappedText(
+            `${index + 1}. ${question.question}`,
+            margin,
+            yPos,
+            pageWidth - 2 * margin
+          );
+          Object.entries(question.options).forEach(([key, value]) => {
+            yPos = addWrappedText(
+              `(${key}) ${value}`,
+              margin + 10,
+              yPos,
+              pageWidth - 2 * margin - 10
+            );
+          });
+        } else {
+          yPos = addWrappedText(
+            `${index + 1}. ${question.question}`,
+            margin,
+            yPos,
+            pageWidth - 2 * margin
+          );
+        }
+
+        yPos = addWrappedText(
+          `(${question.marks} marks)`,
+          margin,
+          yPos,
+          pageWidth - 2 * margin,
+          10
+        );
+        yPos += lineHeight / 2;
+      });
+
+      yPos += lineHeight;
+    });
+
+    // Add "All the Best!" at the bottom of the last page
+    doc.setFontSize(14);
+    doc.text("All the Best!", pageWidth / 2, pageHeight - margin, {
+      align: "center",
+    });
+
+    // Add answer key on a new page
+    addNewPage();
+    yPos = addWrappedText(
+      "Answer Key",
+      pageWidth / 2,
+      yPos,
+      pageWidth - 2 * margin,
+      16,
+      true
+    );
+    yPos += lineHeight;
+
+    selectedQuestions.forEach((question, index) => {
+      if (yPos > pageHeight - 30) addNewPage();
+      const answerText = `Q${index + 1}: ${
+        typeof question.answer === "string"
+          ? question.answer
+          : JSON.stringify(question.answer)
+      }`;
+      yPos = addWrappedText(answerText, margin, yPos, pageWidth - 2 * margin);
+      yPos += lineHeight / 2;
+    });
+
+    doc.save("exam_paper_with_answers.pdf");
+  };
+
+  return <Button onClick={handleDownload}>Download PDF</Button>;
 }
-

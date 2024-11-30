@@ -1,135 +1,213 @@
-import { useState } from 'react';
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function GeneratedExam({
   selectedQuestions,
-  classNumber,
-  board,
-  medium,
+  instituteName,
+  standard,
   subject,
-  totalMarks
+  chapters,
+  studentName,
+  teacherName,
+  totalMarks,
 }) {
-  const [reportDialogOpen, setReportDialogOpen] = useState(false)
-  const [reportedQuestionId, setReportedQuestionId] = useState(null)
+  const [reportDialogOpen, setReportDialogOpen] = useState(false);
+  const [reportedQuestionId, setReportedQuestionId] = useState(null);
+  const [reportType, setReportType] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState("");
 
   const handleReportQuestion = (questionId) => {
-    setReportedQuestionId(questionId)
-    setReportDialogOpen(true)
-  }
+    setReportedQuestionId(questionId);
+    setReportDialogOpen(true);
+  };
 
   const handleSubmitReport = (event) => {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     const reportData = {
       questionId: reportedQuestionId,
-      issue: formData.get('issue'),
-      description: formData.get('description'),
+      reportType: reportType,
+      description: formData.get("description"),
+      correctAnswer: correctAnswer,
+    };
+    console.log("Report submitted:", reportData);
+    setReportDialogOpen(false);
+    setReportType("");
+    setCorrectAnswer("");
+  };
+
+  const renderQuestion = (question, index) => {
+    switch (question.type) {
+      case "MCQ":
+        return (
+          <div key={question.id}>
+            <p>{`${index + 1}. ${question.question}`}</p>
+            {Object.entries(question.options).map(([key, value]) => (
+              <p key={key}>{`(${key}) ${value}`}</p>
+            ))}
+          </div>
+        );
+      case "Short Answer":
+        return (
+          <div key={question.id}>
+            <p>{`${index + 1}. ${question.question}`}</p>
+            {/* You can include the answer if needed */}
+            {/* <p>
+              <strong>Answer:</strong> {question.answer}
+            </p> */}
+          </div>
+        );
+      case "Detailed Answer":
+        return (
+          <div key={question.id}>
+            <p>{`${index + 1}. ${question.question}`}</p>
+            {/* You can include the answer if needed */}
+            {/* <p>
+              <strong>Answer:</strong> {question.answer}
+            </p> */}
+          </div>
+        );
+      case "Very Short Answer":
+        return (
+          <div key={question.id}>
+            <p>{`${index + 1}. ${question.question}`}</p>
+            {/* You can include the answer if needed */}
+            {/* <p>
+              <strong>Answer:</strong> {question.answer}
+            </p> */}
+          </div>
+        );
+      default:
+        return null;
     }
-    console.log('Report submitted:', reportData)
-    // Here you would typically send this data to your backend
-    setReportDialogOpen(false)
-  }
+  };
+
+  // Group questions by type
+  const groupedQuestions = selectedQuestions.reduce((acc, question) => {
+    const key = question.type;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(question);
+    return acc;
+  }, {});
 
   return (
-    (<div className="mt-8">
+    <div className="mt-8">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold">Exam Paper</h2>
-          <p>Class: {classNumber} | Board: {board} | Medium: {medium}</p>
-          <p>Subject: {subject}</p>
-          <p>Total Marks: {totalMarks}</p>
-          <p>Time: {Math.ceil(totalMarks * 1.5)} minutes</p>
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">{instituteName}</h2>
+          <p className="text-lg">
+            Standard: {standard} | Subject: {subject}
+          </p>
+          <p className="text-lg">Chapter: {chapters}</p>
+          <p className="text-lg">Student's Name: {studentName}</p>
+          <p className="text-lg">Teacher Name: {teacherName}</p>
+          <p className="text-lg">Total Marks: {totalMarks}</p>
+          <p className="text-lg">Time: {Math.ceil(totalMarks * 1.5)} minutes</p>
         </div>
-        
-        <ol className="list-decimal list-inside space-y-8">
-          {selectedQuestions.map((question, index) => (
-            <li
-              key={`${question.chapterId}-${question.sectionType}-${question.id}`}
-              className="mb-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <span className="font-semibold">{question.question}</span>
-                  <span className="text-sm text-gray-500 ml-2">({question.marks} marks)</span>
+
+        {Object.entries(groupedQuestions).map(
+          ([type, questions], typeIndex) => (
+            <div key={type} className="mb-8 grid">
+              <h3 className="text-xl font-bold mb-4">
+                {`Q. ${typeIndex + 1}. ${type}`}
+              </h3>
+              {questions.map((question, index) => (
+                <div key={question.id} className="mb-4">
+                  {renderQuestion(question, index)}
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-sm text-gray-500">
+                      ({question.marks} marks)
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleReportQuestion(question.id)}
+                    >
+                      Report
+                    </Button>
+                  </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleReportQuestion(`${question.chapterId}-${question.sectionType}-${question.id}`)}>
-                  Report
-                </Button>
-              </div>
-              <p className="text-sm text-gray-500 mt-1">({question.sectionType})</p>
-            </li>
-          ))}
-        </ol>
+              ))}
+            </div>
+          )
+        )}
+
+        <div className="text-center mt-8">
+          <p className="text-xl font-bold">All the Best!</p>
+        </div>
       </div>
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto mt-8">
-        <h2 className="text-2xl font-bold mb-4">Answer Key</h2>
-        <ol className="list-decimal list-inside space-y-4">
-          {selectedQuestions.map((question, index) => (
-            <li
-              key={`answer-${question.chapterId}-${question.sectionType}-${question.id}`}
-              className="mb-2">
-              <p className="font-semibold">{question.question}</p>
-              <p className="ml-4 mt-1">
-                {typeof question.answer === 'string' ? (
-                  question.answer
-                ) : (
-                  <ul className="list-disc list-inside">
-                    {Object.entries(question.answer).map(([key, value]) => (
-                      <li key={key}>
-                        <span className="font-medium">{key}: </span>
-                        {Array.isArray(value) ? (
-                          <ul className="list-disc list-inside ml-4">
-                            {value.map((item, i) => (
-                              <li key={i}>{item}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          value
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
+
+      {/* Dialog for reporting */}
       <Dialog open={reportDialogOpen} onOpenChange={setReportDialogOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Report a Problem</DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmitReport}>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="issue">Issue Type</Label>
-                <Input
-                  id="issue"
-                  name="issue"
-                  placeholder="e.g., Incorrect question, Typo, etc."
-                  required />
-              </div>
-              <div>
-                <Label htmlFor="description">Description</Label>
-                <Textarea
-                  id="description"
-                  name="description"
-                  placeholder="Please describe the issue in detail"
-                  required />
-              </div>
-              <Button type="submit">Submit Report</Button>
+          <form onSubmit={handleSubmitReport} className="space-y-4">
+            <div>
+              <Label htmlFor="reportType">Issue Type</Label>
+              <Select
+                onValueChange={(value) => setReportType(value)}
+                value={reportType}
+              >
+                <SelectTrigger id="reportType">
+                  <SelectValue placeholder="Select issue type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="wrongAnswer">Wrong Answer</SelectItem>
+                  <SelectItem value="spellingMistake">
+                    Spelling Mistake
+                  </SelectItem>
+                  <SelectItem value="noAnswer">No Answer Shown</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
+            {reportType === "wrongAnswer" && (
+              <div>
+                <Label htmlFor="correctAnswer">Correct Answer</Label>
+                <Textarea
+                  id="correctAnswer"
+                  value={correctAnswer}
+                  onChange={(e) => setCorrectAnswer(e.target.value)}
+                  placeholder="Please provide the correct answer"
+                  required
+                />
+              </div>
+            )}
+            <div>
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                name="description"
+                placeholder="Please describe the issue in detail"
+                required
+              />
+            </div>
+            <Button type="submit">Submit Report</Button>
           </form>
         </DialogContent>
       </Dialog>
-    </div>)
+    </div>
   );
 }
-
