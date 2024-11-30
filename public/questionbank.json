@@ -5,7 +5,7 @@
     "subject": "Science",
     "chapters": [
       {
-        "id": 3,
+        "id": "ch-1001",
         "name": "Life Processes",
         "Ch": "Chapter 6",
         "class": 10,
@@ -16,7 +16,7 @@
             "type": "MCQs",
             "questions": [
               {
-                "id": 1,
+                "id": "q-1001",
                 "type": "MCQ",
                 "question": "The kidneys in human beings are a part of the system for –",
                 "options": {
@@ -31,7 +31,7 @@
                 "isImage": false
               },
               {
-                "id": 2,
+                "id": "q-1002",
                 "type": "MCQ",
                 "question": "The xylem in plants are responsible for –",
                 "options": {
@@ -51,7 +51,7 @@
             "type": "Short Answer Questions",
             "questions": [
               {
-                "id": 5,
+                "id": "q-1003",
                 "type": "Short Answer",
                 "question": "How are fats digested in our bodies? Where does this process take place?",
                 "answer": "Fats are digested in the small intestine. The secretion of liver, called bile, breaks down the large globules of fat into smaller globules. This is called emulsification of fats. The bile also makes the medium alkaline so that the pancreatic enzyme containing lipase further digest fats to form fatty acids. The alkaline medium is required for pancreatic enzyme to act on lipase.",
@@ -60,7 +60,7 @@
                 "isImage": false
               },
               {
-                "id": 6,
+                "id": "q-1004",
                 "type": "Short Answer",
                 "question": "What is the role of saliva in the digestion of food?",
                 "answer": "Saliva contains enzymes, salivary amylase and is released in our mouth. It breaks down starch into sugar (complex carbohydrates into simpler ones).",
@@ -74,7 +74,7 @@
             "type": "Detailed Answer Questions",
             "questions": [
               {
-                "id": 30,
+                "id": "q-1005",
                 "type": "Detailed Answer",
                 "question": "Bile is made in the liver, stored in the gall bladder and passes into the small intestine. Describe the role of bile in digestion.",
                 "answer": "Bile provides the alkaline medium in the small intestine which further helps in the action of pancreatic amylase, lipase and trypsin (protease) to digest the food. It neutralises the acid that comes from the stomach.",
@@ -83,7 +83,7 @@
                 "isImage": false
               },
               {
-                "id": 7,
+                "id": "q-1006",
                 "type": "Detailed Answer",
                 "question": "What are the necessary conditions for autotrophic nutrition and what are its by-products?",
                 "answer": "For autotrophic nutrition to take place the conditions necessary are light, carbon dioxide and water should reach a cell which contains chlorophyll in it. Water first splits to release oxygen and hydrogen. This process is photolysis of water. Hydrogen then combines with carbon dioxide to form glucose. The by-product of autotrophic nutrition is oxygen, which is released through stomata.",
@@ -97,7 +97,7 @@
             "type": "Very Short Answer Questions",
             "questions": [
               {
-                "id": 8,
+                "id": "q-1007",
                 "type": "Very Short Answer",
                 "question": "What is the mode of nutrition when organisms use simple substances like CO2 and water to prepare food inside the body?",
                 "answer": "Autotrophic.",
@@ -106,7 +106,7 @@
                 "isImage": false
               },
               {
-                "id": 9,
+                "id": "q-1008",
                 "type": "Very Short Answer",
                 "question": "What are enzymes?",
                 "answer": "Enzymes are bio-catalysts which help in faster biochemical processes.",
@@ -119,7 +119,7 @@
         ]
       },
       {
-        "id": 1,
+        "id": "ch-1002",
         "ChpaterNumer": 1,
         "BoardWeightage": 20,
         "Ch": "Chapter 1",
@@ -127,17 +127,16 @@
         "sections": [
           {
             "type": "InText Questions",
-
             "questions": [
               {
-                "id": 1,
+                "id": "q-1009",
                 "question": "Why should a magnesium ribbon be cleaned before burning in air?",
                 "answer": "A magnesium ribbon should be cleaned before burning in air because magnesium reacts with oxygen slowly to form magnesium oxide, which prevents the burning of magnesium. The layer of magnesium oxide should be removed by sandpaper.",
                 "chapterNumber": "CH 1",
                 "marks": 5
               },
               {
-                "id": 2,
+                "id": "q-1010",
                 "question": "Write the balanced equation for the following chemical reactions.\n(i) Hydrogen + Chlorine → Hydrogen chloride\n(ii) Barium chloride + Aluminium sulphate → Barium sulphate + Aluminium chloride.",
                 "answer": {
                   "i": "H2 + Cl2 → 2HCl",
@@ -152,17 +151,17 @@
             "type": "Textbook Questions",
             "questions": [
               {
-                "id": 11,
+                "id": "q-1011",
                 "question": "Which of the following statements about the reaction below are incorrect?\n2PbO(s) + C(s) → 2Pb(s) + CO2(g)\n(a) Lead is getting reduced.\n(b) Carbon dioxide is getting oxidised.\n(c) Carbon is getting oxidised.\n(d) Lead oxide is getting reduced.\n(i) (a) and (b)\n(ii) (a) and (c)\n(iii) (a), (b) and (c)\n(iv) all",
                 "answer": "(i) (a) and (b)"
               },
               {
-                "id": 12,
+                "id": "q-1012",
                 "question": "Fe2O3 + 2Al → Al2O3 + 2Fe\nThe above reaction is an example of\n(a) combination reaction.\n(b) double displacement reaction.\n(c) decomposition reaction.\n(d) displacement reaction.",
                 "answer": "(d) displacement reaction"
               },
               {
-                "id": 3,
+                "id": "q-1013",
                 "question": "Translate the following statements into chemical equations and then balance them.\n(a) Hydrogen gas combines with nitrogen to form ammonia.\n(b) Hydrogen sulphide gas burns in air to give water and sulphur dioxide.\n(c) Barium chloride reacts with aluminium sulphate to give aluminium chloride and a precipitate of barium sulphate.\n(d) Potassium metal reacts with water to give potassium hydroxide and hydrogen gas.",
                 "answer": {
                   "a": "3H2(g) + N2(g) → 2NH3(g)",
@@ -172,7 +171,7 @@
                 }
               },
               {
-                "id": 4,
+                "id": "q-1014",
                 "question": "Balance the following chemical equations.\n(a) HNO3 + Ca(OH)2 → Ca(NO3)2 + H2O\n(b) NaOH + H2SO4 → Na2SO4 + H2O\n(c) NaCl + AgNO3 → AgCl + NaNO3\n(d) BaCl2 + H2SO4 → BaSO4 + HCl",
                 "answer": {
                   "a": "2HNO3(aq) + Ca(OH)2(aq) → Ca(NO3)2(aq) + 2H2O(l)",
@@ -182,17 +181,17 @@
                 }
               },
               {
-                "id": 5,
+                "id": "q-1015",
                 "question": "Why do we apply paint on iron articles?",
                 "answer": "We apply paint on iron articles so as to prevent it from rusting. When the surface of iron is coated with paint, its surface does not come in contact with oxygen and moisture, therefore, rusting does not take place."
               },
               {
-                "id": 6,
+                "id": "q-1016",
                 "question": "Oil and fat containing food items are flushed with nitrogen. Why?",
                 "answer": "The food items containing oil and fat are flushed with nitrogen because oil and fat become rancid on oxidation, which has a bad taste and smell. The nitrogen flushing prevents the oxidation of food so that it does not become rancid."
               },
               {
-                "id": 7,
+                "id": "q-1017",
                 "question": "Explain the following terms with one example each.\n(a) Corrosion\n(b) Rancidity",
                 "answer": {
                   "a": "Corrosion: It is a process in which metal reacts with substances like moisture and gases present in the atmosphere to form surface compounds. For example, iron reacts with oxygen in the presence of moisture and forms rust.",
@@ -296,6 +295,104 @@
                   "Sidi Saiyed Grill – Bhavnagar"
                 ],
                 "answer": "Northern Dance Festival – Modhera"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "class": 10,
+    "board": "GSEB",
+    "subject": "Mathematics",
+    "chapters": [
+      {
+        "id": 1,
+        "name": "Real Numbers",
+        "sections": [
+          {
+            "type": "Detailed Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Use Euclid’s division algorithm to find the HCF of 135 and 225, 196 and 38220, 867 and 255.",
+                "image": "public/solutions/GSEB-Solutions-Class-10-Maths-Chapter-1-Real-Numbers-Ex-1.1-img-1.png",
+                "answer": [
+                  {
+                    "case": "For 135 and 225:",
+                    "steps": [
+                      "Let a = 225 and b = 135. Since a > b, applying Euclid's division algorithm:",
+                      "225 = 135 × 1 + 90",
+                      "135 = 90 × 1 + 45",
+                      "90 = 45 × 2 + 0",
+                      "Since the remainder is 0, the HCF is 45."
+                    ]
+                  },
+                  {
+                    "case": "For 196 and 38220:",
+                    "steps": [
+                      "Let a = 38220 and b = 196. Applying Euclid's division algorithm:",
+                      "38220 = 196 × 195 + 0",
+                      "Since the remainder is 0, the HCF is 196."
+                    ]
+                  },
+                  {
+                    "case": "For 867 and 255:",
+                    "steps": [
+                      "Let a = 867 and b = 255. Applying Euclid's division algorithm:",
+                      "867 = 255 × 3 + 102",
+                      "255 = 102 × 2 + 51",
+                      "102 = 51 × 2 + 0",
+                      "Since the remainder is 0, the HCF is 51."
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "question": "Show that any positive odd integer is of the form 6q + 1, or 6q + 3 or 6q + 5 where q is some integer.",
+                "answer": [
+                  "Let a be any positive integer, and let b = 6. By Euclid’s division algorithm, a = 6q + r (where 0 ≤ r < 6).",
+                  "The possible remainders are r = 0, 1, 2, 3, 4, 5.",
+                  "For r = 1, a = 6q + 1 (odd).",
+                  "For r = 3, a = 6q + 3 (odd).",
+                  "For r = 5, a = 6q + 5 (odd).",
+                  "Thus, any positive odd integer is of the form 6q + 1, 6q + 3, or 6q + 5."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Short Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "An army contingent of 616 members is to march behind an army band of 32 members in a parade. The two groups are to march in the same number of columns. What is the maximum number of columns in which they can march?",
+                "answer": [
+                  "To find the maximum number of columns, calculate the HCF of 616 and 32 using Euclid’s algorithm:",
+                  "616 = 32 × 19 + 8",
+                  "32 = 8 × 4 + 0",
+                  "Since the remainder is 0, the HCF is 8.",
+                  "Therefore, the two groups can march in 8 columns."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Multiple Choice Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "What is the HCF of 135 and 225?",
+                "options": ["45", "90", "135", "225"],
+                "answer": "45"
+              },
+              {
+                "id": 2,
+                "question": "Which of the following is a possible form of a positive odd integer?",
+                "options": ["6q", "6q + 2", "6q + 3", "6q + 4"],
+                "answer": "6q + 3"
               }
             ]
           }

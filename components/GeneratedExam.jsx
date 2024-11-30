@@ -55,52 +55,36 @@ export function GeneratedExam({
   };
 
   const renderQuestion = (question, index) => {
-    switch (question.type) {
-      case "MCQ":
-        return (
-          <div key={question.id}>
-            <p>{`${index + 1}. ${question.question}`}</p>
-            {Object.entries(question.options).map(([key, value]) => (
-              <p key={key}>{`(${key}) ${value}`}</p>
-            ))}
-          </div>
-        );
-      case "Short Answer":
-        return (
-          <div key={question.id}>
-            <p>{`${index + 1}. ${question.question}`}</p>
-            {/* You can include the answer if needed */}
-            {/* <p>
-              <strong>Answer:</strong> {question.answer}
-            </p> */}
-          </div>
-        );
-      case "Detailed Answer":
-        return (
-          <div key={question.id}>
-            <p>{`${index + 1}. ${question.question}`}</p>
-            {/* You can include the answer if needed */}
-            {/* <p>
-              <strong>Answer:</strong> {question.answer}
-            </p> */}
-          </div>
-        );
-      case "Very Short Answer":
-        return (
-          <div key={question.id}>
-            <p>{`${index + 1}. ${question.question}`}</p>
-            {/* You can include the answer if needed */}
-            {/* <p>
-              <strong>Answer:</strong> {question.answer}
-            </p> */}
-          </div>
-        );
-      default:
-        return null;
-    }
+    return (
+      <div key={question.id} className="mb-4">
+        <p>{`${index + 1}. ${question.question}`}</p>
+        {question.image && (
+          <img
+            src={question.image}
+            alt={`Question ${index + 1}`}
+            className="mt-2 mb-2 max-w-full rounded shadow"
+          />
+        )}
+        {question.type === "MCQ" &&
+          Object.entries(question.options).map(([key, value]) => (
+            <p key={key}>{`(${key}) ${value}`}</p>
+          ))}
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-sm text-gray-500">
+            ({question.marks} marks)
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => handleReportQuestion(question.id)}
+          >
+            Report
+          </Button>
+        </div>
+      </div>
+    );
   };
 
-  // Group questions by type
   const groupedQuestions = selectedQuestions.reduce((acc, question) => {
     const key = question.type;
     if (!acc[key]) {
@@ -125,39 +109,25 @@ export function GeneratedExam({
           <p className="text-lg">Time: {Math.ceil(totalMarks * 1.5)} minutes</p>
         </div>
 
-        {Object.entries(groupedQuestions).map(
-          ([type, questions], typeIndex) => (
-            <div key={type} className="mb-8 grid">
-              <h3 className="text-xl font-bold mb-4">
-                {`Q. ${typeIndex + 1}. ${type}`}
-              </h3>
-              {questions.map((question, index) => (
-                <div key={question.id} className="mb-4">
-                  {renderQuestion(question, index)}
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-sm text-gray-500">
-                      ({question.marks} marks)
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleReportQuestion(question.id)}
-                    >
-                      Report
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )
-        )}
+        {groupedQuestions &&
+          Object.entries(groupedQuestions).map(
+            ([type, questions], typeIndex) => (
+              <div key={type} className="mb-8">
+                <h3 className="text-xl font-bold mb-4">
+                  {`Q. ${typeIndex + 1}. ${type}`}
+                </h3>
+                {questions.map((question, index) =>
+                  renderQuestion(question, index)
+                )}
+              </div>
+            )
+          )}
 
         <div className="text-center mt-8">
-          <p className="text-xl font-bold">All the Best!</p>
+          <p className="text-xl font-bold">All the Best</p>
         </div>
       </div>
 
-      {/* Dialog for reporting */}
       <Dialog open={reportDialogOpen} onOpenChange={setReportDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

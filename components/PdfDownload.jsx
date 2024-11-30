@@ -11,28 +11,27 @@ export function PdfDownload({
   teacherName,
   totalMarks,
 }) {
-
-  console.log(selectedQuestions);
-  
   const handleDownload = () => {
     if (!selectedQuestions || selectedQuestions.length === 0) {
       console.error("No questions selected");
       return;
     }
+
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.width;
     const pageHeight = doc.internal.pageSize.height;
     const margin = 20;
     const lineHeight = 7;
+    const imageMaxWidth = pageWidth - 2 * margin;
+    const imageMaxHeight = 50; // Adjust image height as needed
     let yPos = margin;
 
-    // Helper function to add a new page
+    // Helper functions
     const addNewPage = () => {
       doc.addPage();
       yPos = margin;
     };
 
-    // Helper function to add text with word wrap
     const addWrappedText = (
       text,
       x,
@@ -49,7 +48,18 @@ export function PdfDownload({
       return y + lineHeight * lines.length;
     };
 
-    // Add exam paper header
+    const addImage = (imageUrl, x, y, maxWidth, maxHeight) => {
+      const img = new Image();
+      img.src = imageUrl;
+      img.onload = () => {
+        const ratio = Math.min(maxWidth / img.width, maxHeight / img.height);
+        const width = img.width * ratio;
+        const height = img.height * ratio;
+        doc.addImage(imageUrl, "JPEG", x, y, width, height);
+      };
+    };
+
+    // Header
     yPos = addWrappedText(
       instituteName,
       margin,
@@ -59,7 +69,7 @@ export function PdfDownload({
       true
     );
     yPos = addWrappedText(
-      `Standard: ${standard} Subject: ${subject}`,
+      `Standard: ${standard} | Subject: ${subject}`,
       margin,
       yPos,
       pageWidth - 2 * margin
@@ -87,36 +97,39 @@ export function PdfDownload({
     // Group questions by type
     const groupedQuestions = selectedQuestions.reduce((acc, question) => {
       const key = question.type;
-      if (!acc[key]) {
-        acc[key] = [];
-      }
+      if (!acc[key]) acc[key] = [];
       acc[key].push(question);
       return acc;
     }, {});
 
-    // Add questions
+    // Render Questions
     Object.entries(groupedQuestions).forEach(([type, questions], typeIndex) => {
       if (yPos > pageHeight - 40) addNewPage();
+
       yPos = addWrappedText(
-        `Question ${typeIndex + 1}. ${type}`,
+        `Q${typeIndex + 1}. ${type}`,
         margin,
         yPos,
         pageWidth - 2 * margin,
         14,
         true
       );
-      yPos += lineHeight / 2;
 
       questions.forEach((question, index) => {
         if (yPos > pageHeight - 40) addNewPage();
 
+        yPos = addWrappedText(
+          `${index + 1}. ${question.question}`,
+          margin,
+          yPos,
+          pageWidth - 2 * margin
+        );
+        if (question.image) {
+          addImage(question.image, margin, yPos, imageMaxWidth, imageMaxHeight);
+          yPos += imageMaxHeight + lineHeight;
+        }
+
         if (question.type === "MCQ") {
-          yPos = addWrappedText(
-            `${index + 1}. ${question.question}`,
-            margin,
-            yPos,
-            pageWidth - 2 * margin
-          );
           Object.entries(question.options).forEach(([key, value]) => {
             yPos = addWrappedText(
               `(${key}) ${value}`,
@@ -125,13 +138,6 @@ export function PdfDownload({
               pageWidth - 2 * margin - 10
             );
           });
-        } else {
-          yPos = addWrappedText(
-            `${index + 1}. ${question.question}`,
-            margin,
-            yPos,
-            pageWidth - 2 * margin
-          );
         }
 
         yPos = addWrappedText(
@@ -153,26 +159,28 @@ export function PdfDownload({
       align: "center",
     });
 
-    // Add answer key on a new page
+    // Add Answer Key
     addNewPage();
     yPos = addWrappedText(
       "Answer Key",
-      pageWidth / 2,
+      margin,
       yPos,
       pageWidth - 2 * margin,
       16,
       true
     );
-    yPos += lineHeight;
-
     selectedQuestions.forEach((question, index) => {
-      if (yPos > pageHeight - 30) addNewPage();
-      const answerText = `Q${index + 1}: ${
+      if (yPos > pageHeight - 40) addNewPage();
+      const answer =
         typeof question.answer === "string"
           ? question.answer
-          : JSON.stringify(question.answer)
-      }`;
-      yPos = addWrappedText(answerText, margin, yPos, pageWidth - 2 * margin);
+          : JSON.stringify(question.answer);
+      yPos = addWrappedText(
+        `Q${index + 1}: ${answer}`,
+        margin,
+        yPos,
+        pageWidth - 2 * margin
+      );
       yPos += lineHeight / 2;
     });
 

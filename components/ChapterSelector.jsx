@@ -12,6 +12,21 @@ export function ChapterSelector({ questionBankData, onSelectQuestions }) {
   const [selectedChapterId, setSelectedChapterId] = useState(null);
   const [selectedQuestions, setSelectedQuestions] = useState([]);
 
+  function generateUniqueId(prefix) {
+    const timestamp = Date.now(); // Get current timestamp
+    const random = Math.floor(Math.random() * 10000); // Generate a random number
+    return `${prefix}-${timestamp}-${random}`; // Combine prefix, timestamp, and random number
+  }
+
+  // Example usage:
+  const chapterId = generateUniqueId("ch"); // e.g., ch-1613508463847-2459
+  const questionId = generateUniqueId("q"); // e.g., q-1613508463847-3218
+  const sectionId = generateUniqueId("sec"); // e.g., sec-1613508463847-5249
+
+  const keydiv = chapterId + questionId + sectionId;
+
+  console.log(chapterId, questionId, sectionId);
+
   useEffect(() => {
     const savedChapterId = localStorage.getItem("selectedChapterId");
     const savedQuestions = localStorage.getItem("selectedQuestions");
@@ -75,81 +90,81 @@ export function ChapterSelector({ questionBankData, onSelectQuestions }) {
     (chapter) => chapter.id === selectedChapterId
   );
 
-  // console.log(questionBankData);
   return (
-    <div className="space-y-6">
-      {/* Display Chapter List */}
+    <>
+      <div>
+        {/* Display Chapter List */}
 
-      <Label>Select Chapter</Label>
+        <Label>Select Chapter</Label>
 
-      {questionBankData.map((chapter) => (
-        <div key={chapter.id}>
-          {/* Unique key based on chapter ID */}
-          <button
-            className="text-blue-600 hover:underline"
-            onClick={() => handleChapterChange(chapter.id)}
-          >
-            {chapter.subject}
-          </button>
-          {selectedChapterId === chapter.id && (
-            <Accordion type="single" collapsible className="w-full mt-4">
-              {chapter.chapters.map((section) => (
-                <AccordionItem
-                  key={section.id || section.name}
-                  value={section.name}
-                >
-                  {/* Unique key based on section ID or name */}
-                  <AccordionTrigger>{section.name}</AccordionTrigger>
-                  <AccordionContent>
-                    {section.sections.map((type) => (
-                      <Accordion
-                        type="single"
-                        collapsible
-                        key={`${type.type}-${section.id}`}
-                      >
-                        {/* Unique key based on type and section */}
-                        <AccordionItem
-                          key={`item-${type.type}-${section.id}`}
-                          value={`item-${type.type}`}
+        {questionBankData.map((chapter) => (
+          <div key={chapter.id}>
+            {/* Use chapter.id as the key */}
+            <button
+              className="text-blue-600 hover:underline"
+              onClick={() => handleChapterChange(chapter.id)}
+            >
+              {chapter.subject}
+            </button>
+            {selectedChapterId === chapter.id && (
+              <Accordion type="single" collapsible className="w-full mt-4">
+                {chapter.chapters.map((section) => (
+                  <AccordionItem
+                    key={section.id} // Ensure the section has a unique key
+                    value={section.name}
+                  >
+                    <AccordionTrigger>{section.name}</AccordionTrigger>
+                    <AccordionContent>
+                      {section.sections.map((type) => (
+                        <Accordion
+                          type="single"
+                          collapsible
+                          key={`${type.type}-${section.id}`} // Combine section and type for uniqueness
                         >
-                          <AccordionTrigger>{type.type}</AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-2">
-                              {type.questions.map((question) => (
-                                <div
-                                  key={question.id} // Unique key for each question
-                                  className="flex items-center space-x-3"
-                                >
-                                  <Checkbox
-                                    id={`question-${question.id}`}
-                                    checked={selectedQuestions.some(
-                                      (q) => q.id === question.id
-                                    )}
-                                    onCheckedChange={() =>
-                                      handleQuestionChange(
-                                        question,
-                                        section.name,
-                                        question.marks
-                                      )
-                                    }
-                                  />
-                                  <Label htmlFor={`question-${question.id}`}>
-                                    {question.question} - {question.marks} Marks
-                                  </Label>
-                                </div>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    ))}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          )}
-        </div>
-      ))}
-    </div>
+                          <AccordionItem
+                            key={`item-${type.type}-${section.id}`} // Ensure item has a unique key
+                            value={`item-${type.type}`}
+                          >
+                            <AccordionTrigger>{type.type}</AccordionTrigger>
+                            <AccordionContent>
+                              <div className="space-y-2">
+                                {type.questions.map((question) => (
+                                  <div
+                                    key={`unique-050505${question.id}`} // Use question.id as the unique key
+                                    className="flex items-center space-x-3"
+                                  >
+                                    <Checkbox
+                                      id={`question-${question.id}`}
+                                      checked={selectedQuestions.some(
+                                        (q) => q.id === question.id
+                                      )}
+                                      onCheckedChange={() =>
+                                        handleQuestionChange(
+                                          question,
+                                          section.name,
+                                          question.marks
+                                        )
+                                      }
+                                    />
+                                    <Label htmlFor={`question-${question.id}`}>
+                                      {question.question} - {question.marks}{" "}
+                                      Marks
+                                    </Label>
+                                  </div>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                      ))}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

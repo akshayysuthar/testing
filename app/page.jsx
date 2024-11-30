@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { ClassSelector } from "@/components/ClassSelector";
 import { SubjectSelector } from "@/components/SubjectSelector";
@@ -16,7 +15,7 @@ export default function ExamPaperGenerator() {
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [selectedMedium, setSelectedMedium] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
-  const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const [selectedQuestions, setSelectedQuestions] = useState([]); // Selected questions will be stored here
   const [totalMarks, setTotalMarks] = useState(80);
   const [subjectData, setSubjectData] = useState([]);
   const [questionBankData, setQuestionBankData] = useState([]);
@@ -80,13 +79,13 @@ export default function ExamPaperGenerator() {
   };
 
   const handleGenerate = () => {
+    // Set the state to show the generated exam content
     setGeneratedExam(true);
   };
 
   const handleGenerationTypeChange = (type) => {
     setGenerationType(type);
   };
-  // console.log(selectedQuestions);
 
   return (
     <div className="container mx-auto p-4">
@@ -157,33 +156,36 @@ export default function ExamPaperGenerator() {
 
         <Button
           onClick={handleGenerate}
-          disabled={selectedQuestions.length === 0}
+          disabled={selectedQuestions.length === 0} // Disable button if no questions selected
         >
           Generate Exam Paper
         </Button>
       </div>
+
       {generatedExam && (
         <div className="mt-8">
           <div id="examPaperContent">
             <GeneratedExam
               selectedQuestions={selectedQuestions}
-              classNumber={selectedClass}
-              board={selectedBoard}
-              medium={selectedMedium}
+              instituteName="ABC School"
+              standard={selectedClass}
               subject={selectedSubject}
+              chapters={["Life Processes"]}
+              studentName="John  Doe"
+              teacherName="Mr. Smith"
               totalMarks={totalMarks}
             />
           </div>
           <div className="mt-4 flex justify-center">
             <PdfDownload
-              selectedQuestions={selectedQuestions} // Ensure this array is populated
+              selectedQuestions={selectedQuestions}
               instituteName="ABC School"
-              standard="10"
-              subject="Science"
+              standard={selectedClass}
+              subject={selectedSubject}
               chapters={["Life Processes"]}
               studentName="John Doe"
               teacherName="Mr. Smith"
-              totalMarks={20}
+              totalMarks={totalMarks}
             />
           </div>
         </div>
