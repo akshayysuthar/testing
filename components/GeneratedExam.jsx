@@ -103,7 +103,7 @@ export function GeneratedExam({
             Standard: {standard} | Subject: {subject}
           </p>
           <p className="text-lg">Chapter: {chapters}</p>
-          <p className="text-lg">Student's Name: {studentName}</p>
+          <p className="text-lg">Student Name: {studentName}</p>
           <p className="text-lg">Teacher Name: {teacherName}</p>
           <p className="text-lg">Total Marks: {totalMarks}</p>
           <p className="text-lg">Time: {Math.ceil(totalMarks * 1.5)} minutes</p>
